@@ -8,6 +8,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
+	"github.com/retronian/romu/internal/covers"
 	"github.com/retronian/romu/internal/dat"
 	"github.com/retronian/romu/internal/db"
 	"github.com/retronian/romu/internal/gamedb"
@@ -40,6 +41,8 @@ func main() {
 		cmdExportGameList()
 	case "enrich":
 		cmdEnrich()
+	case "fetch-covers":
+		cmdFetchCovers()
 	case "match":
 		cmdMatch()
 	case "help", "--help", "-h":
@@ -71,6 +74,8 @@ Usage:
                                 Empty metadata fields are omitted
   romu enrich                   Apply gamedb metadata to matched games
                                 [--platform XX] to filter by platform
+  romu fetch-covers             Download cover art from libretro-thumbnails
+                                [--platform XX] [--output-dir DIR] [--force]
   romu match                    Match ROMs to games by hash
   romu help                     Show this help`)
 }
@@ -495,6 +500,40 @@ func cmdMatch() {
 	}
 
 	fmt.Printf("Matched %d ROM(s) to games.\n", matched)
+}
+
+func cmdFetchCovers() {
+	platform := ""
+	outputDir := ""
+	force := false
+	for i := 2; i < len(os.Args); i++ {
+		switch os.Args[i] {
+		case "--platform":
+			if i+1 < len(os.Args) {
+				platform = os.Args[i+1]
+				i++
+			}
+		case "--output-dir":
+			if i+1 < len(os.Args) {
+				outputDir = os.Args[i+1]
+				i++
+			}
+		case "--force":
+			force = true
+		}
+	}
+
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	if err := covers.FetchCovers(database, platform, outputDir, force); err != nil {
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(1)
+	}
 }
 
 func writeXMLField(f *os.File, tag, value string) {

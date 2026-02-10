@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io/fs"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strconv"
 
 	"github.com/retronian/romu/internal/db"
@@ -30,6 +32,11 @@ func (s *Server) Start() error {
 	mux.HandleFunc("/api/roms", s.handleRoms)
 	mux.HandleFunc("/api/stats", s.handleStats)
 	mux.HandleFunc("/api/platforms", s.handlePlatforms)
+
+	// Cover art files
+	home, _ := os.UserHomeDir()
+	coversDir := filepath.Join(home, ".romu", "covers")
+	mux.Handle("/covers/", http.StripPrefix("/covers/", http.FileServer(http.Dir(coversDir))))
 
 	// Static files
 	staticFS, _ := fs.Sub(staticFiles, "static")

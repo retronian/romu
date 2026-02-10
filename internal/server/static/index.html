@@ -135,14 +135,22 @@ function openPanel(rom){
   document.getElementById('panel-title-ja').textContent=titleJA;
   document.getElementById('panel-title-en').textContent=titleEN;
 
-  let html=`<span class="panel-badge">${rom.platform}</span>`;
+  let html='';
+
+  // Cover image
+  if(rom.title_en){
+    const coverUrl='/covers/'+encodeURIComponent(rom.platform)+'/'+encodeURIComponent(rom.title_en.replace(/[\/\\:*?"<>|]/g,'_'))+'.png';
+    html+=`<div style="text-align:center;margin-bottom:1rem"><img src="${coverUrl}" style="max-width:300px;width:100%;border-radius:8px" onerror="this.parentElement.style.display='none'"></div>`;
+  }
+
+  html+=`<span class="panel-badge">${rom.platform}</span>`;
 
   if(rom.desc_ja){
     html+=`<div class="panel-section"><h4>説明</h4><div class="panel-desc">${escHtml(rom.desc_ja)}</div></div>`;
   }
 
   const meta=[
-    ['開発元',rom.developer],['発売元',rom.publisher],['発売日',rom.release_date],
+    ['開発元',rom.developer],['発売元',rom.publisher],['発売日',formatDate(rom.release_date)],
     ['ジャンル',rom.genre],['プレイヤー',rom.players],['評価',rom.rating]
   ].filter(m=>m[1]);
   if(meta.length){
@@ -178,6 +186,7 @@ function closePanel(){
   document.querySelectorAll('.rom-row').forEach(r=>r.classList.remove('selected'));
 }
 
+function formatDate(s){if(!s)return null;const m=s.match(/^(\d{4})(\d{2})(\d{2})/);if(m)return m[1]+'年'+m[2]+'月'+m[3]+'日';return s}
 function escHtml(s){if(!s)return'';return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
 async function loadRoms(){
