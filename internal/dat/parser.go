@@ -89,7 +89,7 @@ func parseXML(f *os.File, platform string) ([]db.DATRom, string, error) {
 }
 
 // ClrMamePro format parser
-var clrRomLineRe = regexp.MustCompile(`rom\s*\(\s*name\s+"([^"]+)"\s+size\s+(\d+)\s+crc\s+(\w+)\s+md5\s+(\w+)\s+sha1\s+(\w+)\s*\)`)
+var clrRomLineRe = regexp.MustCompile(`rom\s*\(\s*name\s+"([^"]+)"\s+size\s+(\d+)\s+crc\s+(\w+)\s+md5\s+(\w+)\s+sha1\s+(\w+)(?:\s+[^)]*?)?\s*\)`)
 
 func parseClrMamePro(f *os.File, platform string) ([]db.DATRom, string, error) {
 	scanner := bufio.NewScanner(f)

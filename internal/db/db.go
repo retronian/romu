@@ -263,27 +263,62 @@ func (d *DB) MatchROMs(datRoms []DATRom) (int, error) {
 
 	matched := 0
 	for _, dr := range datRoms {
-		var gameID int64
-		err := tx.QueryRow(`SELECT id FROM games WHERE title_en = ? AND platform = ?`, dr.GameTitle, dr.Platform).Scan(&gameID)
-		if err != nil {
+		// Find rom_files by hash (SHA1 > MD5 > CRC32)
+		var query string
+		var hashVal string
+		if dr.SHA1 != "" {
+			query = `SELECT id, game_id FROM rom_files WHERE hash_sha1 = ?`
+			hashVal = dr.SHA1
+		} else if dr.MD5 != "" {
+			query = `SELECT id, game_id FROM rom_files WHERE hash_md5 = ?`
+			hashVal = dr.MD5
+		} else if dr.CRC32 != "" {
+			query = `SELECT id, game_id FROM rom_files WHERE hash_crc32 = ?`
+			hashVal = dr.CRC32
+		} else {
 			continue
 		}
 
-		// Try SHA1 first, then MD5, then CRC32
-		var res sql.Result
-		if dr.SHA1 != "" {
-			res, err = tx.Exec(`UPDATE rom_files SET game_id = ?, updated_at = CURRENT_TIMESTAMP WHERE hash_sha1 = ? AND game_id IS NULL`, gameID, dr.SHA1)
-		} else if dr.MD5 != "" {
-			res, err = tx.Exec(`UPDATE rom_files SET game_id = ?, updated_at = CURRENT_TIMESTAMP WHERE hash_md5 = ? AND game_id IS NULL`, gameID, dr.MD5)
-		} else if dr.CRC32 != "" {
-			res, err = tx.Exec(`UPDATE rom_files SET game_id = ?, updated_at = CURRENT_TIMESTAMP WHERE hash_crc32 = ? AND game_id IS NULL`, gameID, dr.CRC32)
-		}
+		rows, err := tx.Query(query, hashVal)
 		if err != nil {
 			continue
 		}
-		if res != nil {
-			n, _ := res.RowsAffected()
-			matched += int(n)
+		type romMatch struct {
+			id     int64
+			gameID *int64
+		}
+		var matches []romMatch
+		for rows.Next() {
+			var rm romMatch
+			rows.Scan(&rm.id, &rm.gameID)
+			matches = append(matches, rm)
+		}
+		rows.Close()
+
+		if len(matches) == 0 {
+			continue
+		}
+
+		for _, rm := range matches {
+			if rm.gameID != nil {
+				// ROM already linked to a game — update that game's title_en
+				tx.Exec(`UPDATE games SET title_en = ? WHERE id = ? AND (title_en IS NULL OR title_en = '')`,
+					dr.GameTitle, *rm.gameID)
+				matched++
+			} else {
+				// ROM not linked — find or create a game with this title_en
+				var gameID int64
+				err := tx.QueryRow(`SELECT id FROM games WHERE title_en = ? AND platform = ?`, dr.GameTitle, dr.Platform).Scan(&gameID)
+				if err != nil {
+					res, err := tx.Exec(`INSERT INTO games (title_en, platform) VALUES (?, ?)`, dr.GameTitle, dr.Platform)
+					if err != nil {
+						continue
+					}
+					gameID, _ = res.LastInsertId()
+				}
+				tx.Exec(`UPDATE rom_files SET game_id = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`, gameID, rm.id)
+				matched++
+			}
 		}
 	}
 	return matched, tx.Commit()
