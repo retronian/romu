@@ -27,6 +27,12 @@ th{color:var(--accent);text-transform:uppercase;font-size:.7rem;letter-spacing:.
 tr.rom-row{cursor:pointer;transition:background .15s}
 tr.rom-row:hover td{background:rgba(255,107,157,.08)}
 tr.rom-row.selected td{background:rgba(255,107,157,.15)}
+.rom-thumb{width:40px;height:40px;object-fit:cover;border-radius:4px;vertical-align:middle;background:var(--bg)}
+.rom-thumb-placeholder{width:40px;height:40px;background:var(--bg);border:1px solid var(--border);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;color:var(--dim);font-size:1rem}
+td.td-title{white-space:normal;max-width:none}
+.title-main{font-size:.95rem;font-weight:bold;color:var(--text);line-height:1.4}
+.title-sub{font-size:.75rem;color:var(--dim);line-height:1.3;margin-top:.1rem}
+td.td-thumb{width:50px;padding:.3rem .5rem}
 .pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1rem;color:var(--dim);font-size:.8rem}
 .pagination button{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.3rem .8rem;cursor:pointer;font-family:inherit}
 .pagination button:disabled{opacity:.3;cursor:default}
@@ -90,7 +96,7 @@ tr.rom-row.selected td{background:rgba(255,107,157,.15)}
 <input type="text" id="search" placeholder="🔍 検索 (タイトル / ファイル名)..." oninput="debounceSearch()">
 <select id="platform-filter" onchange="loadRoms()"><option value="">全プラットフォーム</option></select>
 </div>
-<table><thead><tr><th>Platform</th><th>Filename</th><th>Title</th><th>Size</th></tr></thead><tbody id="rom-body"></tbody></table>
+<table><thead><tr><th></th><th>タイトル</th><th>Platform</th><th>Size</th></tr></thead><tbody id="rom-body"></tbody></table>
 <div class="pagination">
 <button id="prev-btn" onclick="changePage(-1)">◀ Prev</button>
 <span id="page-info"></span>
@@ -195,7 +201,17 @@ async function loadRoms(){
   const d=await r.json();
   currentRoms=d.roms||[];
   const b=document.getElementById('rom-body');
-  b.innerHTML=currentRoms.map((r,i)=>`<tr class="rom-row" data-idx="${i}" onclick="openPanel(currentRoms[${i}])"><td>${r.platform}</td><td title="${escHtml(r.filename)}">${escHtml(r.filename)}</td><td title="${escHtml(r.title)}">${escHtml(r.title)}</td><td>${fmt(r.size)}</td></tr>`).join('');
+  b.innerHTML=currentRoms.map((r,i)=>{
+    const titleJA=r.title_ja||r.title||r.filename;
+    const titleEN=r.title_en||'';
+    const subLine=titleEN&&titleEN!==titleJA?`<div class="title-sub">${escHtml(titleEN)}</div>`:'';
+    let thumb='<div class="rom-thumb-placeholder">🎮</div>';
+    if(r.title_en){
+      const coverUrl='/covers/'+encodeURIComponent(r.platform)+'/'+encodeURIComponent(r.title_en.replace(/[\/\\:*?"<>|]/g,'_'))+'.png';
+      thumb=`<img class="rom-thumb" src="${coverUrl}" onerror="this.outerHTML='<div class=\\'rom-thumb-placeholder\\'>🎮</div>'">`;
+    }
+    return `<tr class="rom-row" data-idx="${i}" onclick="openPanel(currentRoms[${i}])"><td class="td-thumb">${thumb}</td><td class="td-title"><div class="title-main">${escHtml(titleJA)}</div>${subLine}</td><td>${r.platform}</td><td>${fmt(r.size)}</td></tr>`;
+  }).join('');
   const tp=Math.ceil(d.total/perPage)||1;
   document.getElementById('page-info').textContent=`${page} / ${tp} (${d.total} ROMs)`;
   document.getElementById('prev-btn').disabled=page<=1;
