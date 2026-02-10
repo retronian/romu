@@ -11,7 +11,8 @@ body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);
 .header{background:linear-gradient(135deg,#1a0a2e,#0a1628);border-bottom:2px solid var(--accent);padding:1.5rem 2rem;text-align:center}
 .header h1{font-size:2rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.3em}
 .header p{color:var(--dim);font-size:.8rem;margin-top:.3rem}
-.container{max-width:1200px;margin:0 auto;padding:1.5rem}
+.container{max-width:1200px;margin:0 auto;padding:1.5rem;transition:margin-right .3s}
+.container.panel-open{margin-right:420px}
 .tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
 .tab{padding:.6rem 1.2rem;background:var(--surface);border:1px solid var(--border);color:var(--dim);cursor:pointer;font-family:inherit;font-size:.85rem;transition:.2s}
 .tab.active{color:var(--accent);border-color:var(--accent)}
@@ -23,7 +24,9 @@ input{flex:1;min-width:200px}
 table{width:100%;border-collapse:collapse}
 th,td{padding:.5rem .8rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px}
 th{color:var(--accent);text-transform:uppercase;font-size:.7rem;letter-spacing:.1em}
-tr:hover td{background:rgba(255,107,157,.05)}
+tr.rom-row{cursor:pointer;transition:background .15s}
+tr.rom-row:hover td{background:rgba(255,107,157,.08)}
+tr.rom-row.selected td{background:rgba(255,107,157,.15)}
 .pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1rem;color:var(--dim);font-size:.8rem}
 .pagination button{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.3rem .8rem;cursor:pointer;font-family:inherit}
 .pagination button:disabled{opacity:.3;cursor:default}
@@ -44,7 +47,32 @@ tr:hover td{background:rgba(255,107,157,.05)}
 .bar-count{margin-left:.5rem;color:var(--dim);min-width:40px}
 #roms-view,#stats-view{display:none}
 #roms-view.active,#stats-view.active{display:block}
-@media(max-width:600px){.container{padding:.8rem}th,td{padding:.3rem .4rem;font-size:.7rem}.header h1{font-size:1.3rem}}
+
+/* Side Panel */
+.side-panel{position:fixed;top:0;right:-420px;width:420px;height:100vh;background:var(--surface);border-left:2px solid var(--accent);overflow-y:auto;transition:right .3s ease;z-index:100}
+.side-panel.open{right:0}
+.panel-header{display:flex;justify-content:space-between;align-items:flex-start;padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#1a0a2e,#0a1628)}
+.panel-close{background:none;border:1px solid var(--border);color:var(--dim);font-size:1.2rem;cursor:pointer;padding:.2rem .6rem;font-family:inherit;transition:.2s}
+.panel-close:hover{color:var(--accent);border-color:var(--accent)}
+.panel-title-ja{font-size:1.3rem;color:var(--accent);font-weight:bold;line-height:1.4;word-break:break-word;white-space:normal}
+.panel-title-en{font-size:.8rem;color:var(--dim);margin-top:.3rem;word-break:break-word;white-space:normal}
+.panel-body{padding:1.2rem 1.5rem}
+.panel-badge{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:.2rem .6rem;font-size:.7rem;font-weight:bold;letter-spacing:.05em;margin-bottom:1rem;border-radius:2px}
+.panel-section{margin-bottom:1.2rem}
+.panel-section h4{color:var(--accent2);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.panel-desc{color:var(--text);font-size:.85rem;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.meta-table{width:100%;font-size:.8rem}
+.meta-table td{padding:.35rem 0;border-bottom:1px solid rgba(42,42,58,.5);white-space:normal;max-width:none}
+.meta-table td:first-child{color:var(--dim);width:80px;padding-right:.8rem;white-space:nowrap}
+.meta-table td:last-child{color:var(--text)}
+.panel-file-info{font-size:.75rem;color:var(--dim);line-height:1.8}
+.panel-file-info code{color:var(--yellow);font-size:.75rem}
+.panel-empty{color:var(--dim);font-style:italic;font-size:.85rem}
+
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);z-index:99;display:none}
+.overlay.open{display:block}
+
+@media(max-width:600px){.container{padding:.8rem}th,td{padding:.3rem .4rem;font-size:.7rem}.header h1{font-size:1.3rem}.side-panel{width:100%;right:-100%}.container.panel-open{margin-right:0}}
 </style>
 </head>
 <body>
@@ -52,7 +80,7 @@ tr:hover td{background:rgba(255,107,157,.05)}
 <h1>🎮 ROMU</h1>
 <p>ROM Collection Manager</p>
 </div>
-<div class="container">
+<div class="container" id="main-container">
 <div class="tabs">
 <button class="tab active" onclick="showTab('roms')">ROM一覧</button>
 <button class="tab" onclick="showTab('stats')">統計</button>
@@ -79,15 +107,95 @@ tr:hover td{background:rgba(255,107,157,.05)}
 <div class="chart"><h3>プラットフォーム別</h3><div id="chart-bars"></div></div>
 </div>
 </div>
+
+<div class="overlay" id="panel-overlay" onclick="closePanel()"></div>
+<div class="side-panel" id="side-panel">
+<div class="panel-header">
+<div>
+<div class="panel-title-ja" id="panel-title-ja"></div>
+<div class="panel-title-en" id="panel-title-en"></div>
+</div>
+<button class="panel-close" onclick="closePanel()">✕</button>
+</div>
+<div class="panel-body" id="panel-body"></div>
+</div>
+
 <script>
-let page=1,perPage=50,searchTimer;
+let page=1,perPage=50,searchTimer,currentRoms=[];
 function debounceSearch(){clearTimeout(searchTimer);searchTimer=setTimeout(()=>{page=1;loadRoms()},300)}
 function showTab(t){document.querySelectorAll('.tab').forEach((e,i)=>e.classList.toggle('active',i===(t==='roms'?0:1)));document.getElementById('roms-view').classList.toggle('active',t==='roms');document.getElementById('stats-view').classList.toggle('active',t==='stats');if(t==='stats')loadStats()}
 function changePage(d){page+=d;loadRoms()}
 function fmt(n){if(n>=1e9)return(n/1e9).toFixed(1)+'G';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
-async function loadRoms(){const q=document.getElementById('search').value;const p=document.getElementById('platform-filter').value;const r=await fetch(`/api/roms?q=${encodeURIComponent(q)}&platform=${encodeURIComponent(p)}&page=${page}&per_page=${perPage}`);const d=await r.json();const b=document.getElementById('rom-body');b.innerHTML=d.roms.map(r=>`<tr><td>${r.platform}</td><td title="${r.filename}">${r.filename}</td><td title="${r.title}">${r.title}</td><td>${fmt(r.size)}</td></tr>`).join('');const tp=Math.ceil(d.total/perPage)||1;document.getElementById('page-info').textContent=`${page} / ${tp} (${d.total} ROMs)`;document.getElementById('prev-btn').disabled=page<=1;document.getElementById('next-btn').disabled=page>=tp}
+
+function openPanel(rom){
+  const p=document.getElementById('side-panel');
+  const o=document.getElementById('panel-overlay');
+  const titleJA=rom.title_ja||rom.title||'-';
+  const titleEN=rom.title_en||'';
+  document.getElementById('panel-title-ja').textContent=titleJA;
+  document.getElementById('panel-title-en').textContent=titleEN;
+
+  let html=`<span class="panel-badge">${rom.platform}</span>`;
+
+  if(rom.desc_ja){
+    html+=`<div class="panel-section"><h4>説明</h4><div class="panel-desc">${escHtml(rom.desc_ja)}</div></div>`;
+  }
+
+  const meta=[
+    ['開発元',rom.developer],['発売元',rom.publisher],['発売日',rom.release_date],
+    ['ジャンル',rom.genre],['プレイヤー',rom.players],['評価',rom.rating]
+  ].filter(m=>m[1]);
+  if(meta.length){
+    html+=`<div class="panel-section"><h4>メタデータ</h4><table class="meta-table">`;
+    meta.forEach(m=>{html+=`<tr><td>${m[0]}</td><td>${escHtml(m[1])}</td></tr>`});
+    html+=`</table></div>`;
+  }
+
+  html+=`<div class="panel-section"><h4>ファイル情報</h4><div class="panel-file-info">`;
+  html+=`ファイル名: <code>${escHtml(rom.filename)}</code><br>`;
+  html+=`サイズ: <code>${fmt(rom.size)}</code><br>`;
+  html+=`CRC32: <code>${escHtml(rom.crc32)}</code>`;
+  html+=`</div></div>`;
+
+  if(!rom.desc_ja&&!meta.length){
+    html+=`<div class="panel-empty">メタデータなし</div>`;
+  }
+
+  document.getElementById('panel-body').innerHTML=html;
+  p.classList.add('open');
+  o.classList.add('open');
+  document.getElementById('main-container').classList.add('panel-open');
+
+  document.querySelectorAll('.rom-row').forEach(r=>r.classList.remove('selected'));
+  const sel=document.querySelector(`[data-idx="${currentRoms.indexOf(rom)}"]`);
+  if(sel)sel.classList.add('selected');
+}
+
+function closePanel(){
+  document.getElementById('side-panel').classList.remove('open');
+  document.getElementById('panel-overlay').classList.remove('open');
+  document.getElementById('main-container').classList.remove('panel-open');
+  document.querySelectorAll('.rom-row').forEach(r=>r.classList.remove('selected'));
+}
+
+function escHtml(s){if(!s)return'';return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+async function loadRoms(){
+  const q=document.getElementById('search').value;const p=document.getElementById('platform-filter').value;
+  const r=await fetch(`/api/roms?q=${encodeURIComponent(q)}&platform=${encodeURIComponent(p)}&page=${page}&per_page=${perPage}`);
+  const d=await r.json();
+  currentRoms=d.roms||[];
+  const b=document.getElementById('rom-body');
+  b.innerHTML=currentRoms.map((r,i)=>`<tr class="rom-row" data-idx="${i}" onclick="openPanel(currentRoms[${i}])"><td>${r.platform}</td><td title="${escHtml(r.filename)}">${escHtml(r.filename)}</td><td title="${escHtml(r.title)}">${escHtml(r.title)}</td><td>${fmt(r.size)}</td></tr>`).join('');
+  const tp=Math.ceil(d.total/perPage)||1;
+  document.getElementById('page-info').textContent=`${page} / ${tp} (${d.total} ROMs)`;
+  document.getElementById('prev-btn').disabled=page<=1;
+  document.getElementById('next-btn').disabled=page>=tp;
+}
 async function loadPlatforms(){const r=await fetch('/api/platforms');const d=await r.json();const s=document.getElementById('platform-filter');(d||[]).forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;s.appendChild(o)})}
 async function loadStats(){const r=await fetch('/api/stats');const d=await r.json();document.getElementById('total-roms').textContent=d.total;document.getElementById('total-matched').textContent=d.matched;document.getElementById('match-pct').textContent=d.total?`${(d.matched/d.total*100).toFixed(1)}%`:'';document.getElementById('total-unmatched').textContent=d.unmatched;document.getElementById('total-platforms').textContent=(d.platforms||[]).length;const mx=Math.max(...(d.platforms||[]).map(p=>p.total),1);document.getElementById('chart-bars').innerHTML=(d.platforms||[]).map(p=>`<div class="bar-row"><span class="bar-label">${p.platform}</span><div class="bar-track"><div class="bar-fill bar-matched" style="width:${p.matched/mx*100}%"></div></div><span class="bar-count">${p.total}</span></div>`).join('')}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePanel()});
 loadPlatforms();loadRoms()
 </script>
 </body>

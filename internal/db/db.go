@@ -26,6 +26,13 @@ type RomFile struct {
 	GameID    *int64
 	TitleEN   *string // joined from games
 	TitleJA   *string // joined from games
+	DescJA      *string
+	Developer   *string
+	Publisher   *string
+	ReleaseDate *string
+	Genre       *string
+	Players     *string
+	Rating      *string
 }
 
 type Game struct {
@@ -122,7 +129,8 @@ func (d *DB) UpsertRomFile(path, filename string, size int64, crc32, md5, sha1, 
 
 func (d *DB) ListRomFiles() ([]RomFile, error) {
 	rows, err := d.Query(`
-		SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en, g.title_ja
+		SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en, g.title_ja,
+			g.description_ja, g.developer, g.publisher, g.release_date, g.genre, g.players, g.rating
 		FROM rom_files r LEFT JOIN games g ON r.game_id = g.id
 		ORDER BY r.platform, r.filename
 	`)
@@ -133,7 +141,8 @@ func (d *DB) ListRomFiles() ([]RomFile, error) {
 	var files []RomFile
 	for rows.Next() {
 		var f RomFile
-		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN, &f.TitleJA); err != nil {
+		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN, &f.TitleJA,
+			&f.DescJA, &f.Developer, &f.Publisher, &f.ReleaseDate, &f.Genre, &f.Players, &f.Rating); err != nil {
 			return nil, err
 		}
 		files = append(files, f)
@@ -350,7 +359,8 @@ func (d *DB) SearchRoms(query, platform string, page, perPage int) ([]RomFile, i
 	}
 
 	selectArgs := append(args, perPage, offset)
-	rows, err := d.Query(`SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en, g.title_ja `+baseWhere+` ORDER BY r.platform, r.filename LIMIT ? OFFSET ?`, selectArgs...)
+	rows, err := d.Query(`SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en, g.title_ja,
+		g.description_ja, g.developer, g.publisher, g.release_date, g.genre, g.players, g.rating `+baseWhere+` ORDER BY r.platform, r.filename LIMIT ? OFFSET ?`, selectArgs...)
 	if err != nil {
 		return nil, 0, err
 	}
@@ -358,7 +368,8 @@ func (d *DB) SearchRoms(query, platform string, page, perPage int) ([]RomFile, i
 	var files []RomFile
 	for rows.Next() {
 		var f RomFile
-		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN, &f.TitleJA); err != nil {
+		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN, &f.TitleJA,
+			&f.DescJA, &f.Developer, &f.Publisher, &f.ReleaseDate, &f.Genre, &f.Players, &f.Rating); err != nil {
 			return nil, 0, err
 		}
 		files = append(files, f)

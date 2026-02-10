@@ -59,13 +59,20 @@ func (s *Server) handleRoms(w http.ResponseWriter, r *http.Request) {
 	}
 
 	type romJSON struct {
-		Platform string  `json:"platform"`
-		Filename string  `json:"filename"`
-		Size     int64   `json:"size"`
-		CRC32    string  `json:"crc32"`
-		Title    string  `json:"title"`
-		TitleEN  *string `json:"title_en"`
-		TitleJA  *string `json:"title_ja"`
+		Platform    string  `json:"platform"`
+		Filename    string  `json:"filename"`
+		Size        int64   `json:"size"`
+		CRC32       string  `json:"crc32"`
+		Title       string  `json:"title"`
+		TitleEN     *string `json:"title_en"`
+		TitleJA     *string `json:"title_ja"`
+		DescJA      *string `json:"desc_ja,omitempty"`
+		Developer   *string `json:"developer,omitempty"`
+		Publisher   *string `json:"publisher,omitempty"`
+		ReleaseDate *string `json:"release_date,omitempty"`
+		Genre       *string `json:"genre,omitempty"`
+		Players     *string `json:"players,omitempty"`
+		Rating      *string `json:"rating,omitempty"`
 	}
 
 	roms := make([]romJSON, 0, len(files))
@@ -79,6 +86,8 @@ func (s *Server) handleRoms(w http.ResponseWriter, r *http.Request) {
 		roms = append(roms, romJSON{
 			Platform: f.Platform, Filename: f.Filename, Size: f.Size,
 			CRC32: f.HashCRC32, Title: title, TitleEN: f.TitleEN, TitleJA: f.TitleJA,
+			DescJA: f.DescJA, Developer: f.Developer, Publisher: f.Publisher,
+			ReleaseDate: f.ReleaseDate, Genre: f.Genre, Players: f.Players, Rating: f.Rating,
 		})
 	}
 
