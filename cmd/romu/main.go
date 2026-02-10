@@ -10,6 +10,7 @@ import (
 
 	"github.com/retronian/romu/internal/dat"
 	"github.com/retronian/romu/internal/db"
+	"github.com/retronian/romu/internal/gamedb"
 	"github.com/retronian/romu/internal/scanner"
 	"github.com/retronian/romu/internal/server"
 )
@@ -35,6 +36,10 @@ func main() {
 		cmdImportDAT()
 	case "import-gamelist":
 		cmdImportGameList()
+	case "export-gamelist":
+		cmdExportGameList()
+	case "enrich":
+		cmdEnrich()
 	case "match":
 		cmdMatch()
 	case "help", "--help", "-h":
@@ -60,6 +65,12 @@ Usage:
   romu import-dat <dat-file>    Import a No-Intro DAT file
                                 [--platform XX] to override auto-detection
   romu import-gamelist <dir>    Import all gamelist.xml from ROM directory
+  romu export-gamelist <dir>    Export gamelist.xml per platform
+                                [--platform XX] to export single platform
+                                ZIP files use ./zipname.zip as path
+                                Empty metadata fields are omitted
+  romu enrich                   Apply gamedb metadata to matched games
+                                [--platform XX] to filter by platform
   romu match                    Match ROMs to games by hash
   romu help                     Show this help`)
 }
@@ -257,7 +268,17 @@ func cmdImportGameList() {
 		// Convert to db entries
 		dbEntries := make([]db.GameListEntry, len(entries))
 		for i, e := range entries {
-			dbEntries[i] = db.GameListEntry{Filename: e.Filename, Name: e.Name}
+			dbEntries[i] = db.GameListEntry{
+				Filename:    e.Filename,
+				Name:        e.Name,
+				Desc:        e.Desc,
+				ReleaseDate: e.ReleaseDate,
+				Developer:   e.Developer,
+				Publisher:   e.Publisher,
+				Genre:       e.Genre,
+				Players:     e.Players,
+				Rating:      e.Rating,
+			}
 		}
 
 		created, matched, err := database.MatchByGameList(dbEntries, platform)
@@ -277,6 +298,120 @@ func cmdImportGameList() {
 	}
 
 	fmt.Printf("\nTotal: %d games created, %d ROMs matched\n", totalCreated, totalMatched)
+}
+
+func cmdEnrich() {
+	platform := ""
+	for i := 2; i < len(os.Args)-1; i++ {
+		if os.Args[i] == "--platform" {
+			platform = os.Args[i+1]
+		}
+	}
+
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	roms, noMatch, err := database.GetEnrichableRoms(platform)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(1)
+	}
+
+	if noMatch > 0 {
+		fmt.Printf("Note: %d ROM(s) have no game match. Run 'romu match' with DAT files first.\n\n", noMatch)
+	}
+
+	enriched, skipped := 0, 0
+	for _, r := range roms {
+		entry := gamedb.Lookup(r.Platform, r.TitleEN)
+		if entry == nil {
+			skipped++
+			continue
+		}
+		err := database.UpdateGameMetadata(r.GameID, entry.TitleJA, entry.DescJA, entry.Developer, entry.Publisher, entry.ReleaseDate, entry.Genre, entry.Players)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "  error updating game %d: %v\n", r.GameID, err)
+			continue
+		}
+		enriched++
+	}
+
+	fmt.Printf("Enriched %d games (%d skipped - no gamedb entry)\n", enriched, skipped)
+}
+
+func cmdExportGameList() {
+	if len(os.Args) < 3 {
+		fmt.Fprintln(os.Stderr, "usage: romu export-gamelist <output-dir> [--platform XX]")
+		os.Exit(1)
+	}
+	outDir := os.Args[2]
+	platform := ""
+	for i := 3; i < len(os.Args)-1; i++ {
+		if os.Args[i] == "--platform" {
+			platform = os.Args[i+1]
+		}
+	}
+
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	var platforms []string
+	if platform != "" {
+		platforms = []string{platform}
+	} else {
+		platforms, err = database.GetPlatforms()
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "error: %v\n", err)
+			os.Exit(1)
+		}
+	}
+
+	for _, p := range platforms {
+		entries, err := database.ExportGameList(p)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "  error [%s]: %v\n", p, err)
+			continue
+		}
+		if len(entries) == 0 {
+			continue
+		}
+
+		dir := filepath.Join(outDir, p)
+		os.MkdirAll(dir, 0755)
+		outPath := filepath.Join(dir, "gamelist.xml")
+
+		f, err := os.Create(outPath)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "  error creating %s: %v\n", outPath, err)
+			continue
+		}
+		f.WriteString("<?xml version=\"1.0\"?>\n<gameList>\n")
+		for _, e := range entries {
+			f.WriteString("  <game>\n")
+			writeXMLField(f, "path", e.Path)
+			writeXMLField(f, "name", e.Name)
+			writeXMLField(f, "desc", e.Desc)
+			writeXMLField(f, "releasedate", e.ReleaseDate)
+			writeXMLField(f, "developer", e.Developer)
+			writeXMLField(f, "publisher", e.Publisher)
+			writeXMLField(f, "genre", e.Genre)
+			writeXMLField(f, "players", e.Players)
+			writeXMLField(f, "rating", e.Rating)
+			f.WriteString("  </game>\n")
+		}
+		f.WriteString("</gameList>\n")
+		f.Close()
+
+		fmt.Printf("  [%s] %d games → %s\n", p, len(entries), outPath)
+	}
 }
 
 func cmdImportDAT() {
@@ -360,4 +495,20 @@ func cmdMatch() {
 	}
 
 	fmt.Printf("Matched %d ROM(s) to games.\n", matched)
+}
+
+func writeXMLField(f *os.File, tag, value string) {
+	if value == "" {
+		return
+	}
+	escaped := xmlEscape(value)
+	fmt.Fprintf(f, "    <%s>%s</%s>\n", tag, escaped, tag)
+}
+
+func xmlEscape(s string) string {
+	s = strings.ReplaceAll(s, "&", "&amp;")
+	s = strings.ReplaceAll(s, "<", "&lt;")
+	s = strings.ReplaceAll(s, ">", "&gt;")
+	s = strings.ReplaceAll(s, "\"", "&quot;")
+	return s
 }

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -98,7 +99,13 @@ func migrate(db *sql.DB) error {
 	CREATE INDEX IF NOT EXISTS idx_games_platform ON games(platform);
 	`
 	_, err := db.Exec(schema)
-	return err
+	if err != nil {
+		return err
+	}
+	// Add columns if missing (ignore errors = already exists)
+	db.Exec(`ALTER TABLE games ADD COLUMN players TEXT`)
+	db.Exec(`ALTER TABLE games ADD COLUMN rating TEXT`)
+	return nil
 }
 
 func (d *DB) UpsertRomFile(path, filename string, size int64, crc32, md5, sha1, platform string) error {
@@ -226,12 +233,17 @@ func (d *DB) MatchByGameList(entries []GameListEntry, platform string) (created 
 		var gameID int64
 		err = tx.QueryRow(`SELECT id FROM games WHERE title_ja = ? AND platform = ?`, e.Name, platform).Scan(&gameID)
 		if err != nil {
-			res, err := tx.Exec(`INSERT INTO games (title_ja, platform) VALUES (?, ?)`, e.Name, platform)
+			res, err := tx.Exec(`INSERT INTO games (title_ja, platform, description_ja, developer, publisher, release_date, genre, players, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+				e.Name, platform, e.Desc, e.Developer, e.Publisher, e.ReleaseDate, e.Genre, e.Players, e.Rating)
 			if err != nil {
 				return 0, 0, fmt.Errorf("insert game %q: %w", e.Name, err)
 			}
 			gameID, _ = res.LastInsertId()
 			created++
+		} else {
+			// Update metadata on existing game
+			tx.Exec(`UPDATE games SET description_ja=COALESCE(NULLIF(?, ''), description_ja), developer=COALESCE(NULLIF(?, ''), developer), publisher=COALESCE(NULLIF(?, ''), publisher), release_date=COALESCE(NULLIF(?, ''), release_date), genre=COALESCE(NULLIF(?, ''), genre), players=COALESCE(NULLIF(?, ''), players), rating=COALESCE(NULLIF(?, ''), rating), updated_at=CURRENT_TIMESTAMP WHERE id=?`,
+				e.Desc, e.Developer, e.Publisher, e.ReleaseDate, e.Genre, e.Players, e.Rating, gameID)
 		}
 
 		// Link rom_files to game
@@ -249,8 +261,60 @@ func (d *DB) MatchByGameList(entries []GameListEntry, platform string) (created 
 
 // GameListEntry for import
 type GameListEntry struct {
-	Filename string
-	Name     string
+	Filename    string
+	Name        string
+	Desc        string
+	ReleaseDate string
+	Developer   string
+	Publisher   string
+	Genre       string
+	Players     string
+	Rating      string
+}
+
+// ExportGameListEntry holds data for gamelist.xml export
+type ExportGameListEntry struct {
+	Path        string
+	Name        string
+	Desc        string
+	ReleaseDate string
+	Developer   string
+	Publisher   string
+	Genre       string
+	Players     string
+	Rating      string
+}
+
+// ExportGameList returns entries for gamelist.xml export for a given platform
+func (d *DB) ExportGameList(platform string) ([]ExportGameListEntry, error) {
+	rows, err := d.Query(`
+		SELECT r.filename, COALESCE(g.title_ja, g.title_en, r.filename), 
+			COALESCE(g.description_ja, ''), COALESCE(g.release_date, ''),
+			COALESCE(g.developer, ''), COALESCE(g.publisher, ''),
+			COALESCE(g.genre, ''), COALESCE(g.players, ''), COALESCE(g.rating, '')
+		FROM rom_files r LEFT JOIN games g ON r.game_id = g.id
+		WHERE r.platform = ?
+		ORDER BY r.filename
+	`, platform)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var entries []ExportGameListEntry
+	for rows.Next() {
+		var e ExportGameListEntry
+		var filename string
+		if err := rows.Scan(&filename, &e.Name, &e.Desc, &e.ReleaseDate, &e.Developer, &e.Publisher, &e.Genre, &e.Players, &e.Rating); err != nil {
+			return nil, err
+		}
+		// For ZIP files (filename like "zipname.zip/inner.ext"), use just the zip part
+		if idx := strings.Index(filename, ".zip/"); idx >= 0 {
+			filename = filename[:idx+4]
+		}
+		e.Path = "./" + filename
+		entries = append(entries, e)
+	}
+	return entries, rows.Err()
 }
 
 // SearchResult holds a ROM search result
@@ -365,6 +429,67 @@ func (d *DB) GetPlatforms() ([]string, error) {
 		platforms = append(platforms, p)
 	}
 	return platforms, rows.Err()
+}
+
+// EnrichableRom holds info needed for the enrich command
+type EnrichableRom struct {
+	GameID  int64
+	TitleEN string
+	Platform string
+}
+
+// GetEnrichableRoms returns rom_files that have a game_id with title_en set
+func (d *DB) GetEnrichableRoms(platform string) ([]EnrichableRom, int, error) {
+	baseQuery := `FROM rom_files r JOIN games g ON r.game_id = g.id WHERE g.title_en IS NOT NULL AND g.title_en != ''`
+	args := []interface{}{}
+	if platform != "" {
+		baseQuery += ` AND r.platform = ?`
+		args = append(args, platform)
+	}
+
+	rows, err := d.Query(`SELECT DISTINCT g.id, g.title_en, r.platform `+baseQuery, args...)
+	if err != nil {
+		return nil, 0, err
+	}
+	defer rows.Close()
+	seen := map[int64]bool{}
+	var result []EnrichableRom
+	for rows.Next() {
+		var e EnrichableRom
+		rows.Scan(&e.GameID, &e.TitleEN, &e.Platform)
+		if !seen[e.GameID] {
+			seen[e.GameID] = true
+			result = append(result, e)
+		}
+	}
+
+	// Count rom_files without game_id
+	noMatchQuery := `SELECT COUNT(*) FROM rom_files WHERE game_id IS NULL`
+	noMatchArgs := []interface{}{}
+	if platform != "" {
+		noMatchQuery += ` AND platform = ?`
+		noMatchArgs = append(noMatchArgs, platform)
+	}
+	var noMatch int
+	d.QueryRow(noMatchQuery, noMatchArgs...).Scan(&noMatch)
+
+	return result, noMatch, rows.Err()
+}
+
+// UpdateGameMetadata updates metadata fields on a game
+func (d *DB) UpdateGameMetadata(gameID int64, titleJA, descJA, developer, publisher, releaseDate, genre, players string) error {
+	_, err := d.Exec(`UPDATE games SET
+		title_ja = COALESCE(NULLIF(?, ''), title_ja),
+		description_ja = COALESCE(NULLIF(?, ''), description_ja),
+		developer = COALESCE(NULLIF(?, ''), developer),
+		publisher = COALESCE(NULLIF(?, ''), publisher),
+		release_date = COALESCE(NULLIF(?, ''), release_date),
+		genre = COALESCE(NULLIF(?, ''), genre),
+		players = COALESCE(NULLIF(?, ''), players),
+		updated_at = CURRENT_TIMESTAMP
+		WHERE id = ?`,
+		titleJA, descJA, developer, publisher, releaseDate, genre, players, gameID)
+	return err
 }
 
 // MatchByHash matches rom_files to games using DAT ROM info

@@ -15,14 +15,34 @@ type GameList struct {
 }
 
 type GameListGame struct {
-	Path string `xml:"path"`
-	Name string `xml:"name"`
+	Path        string `xml:"path"`
+	Name        string `xml:"name"`
+	Desc        string `xml:"desc"`
+	ReleaseDate string `xml:"releasedate"`
+	Developer   string `xml:"developer"`
+	Publisher   string `xml:"publisher"`
+	Genre       string `xml:"genre"`
+	Players     string `xml:"players"`
+	Rating      string `xml:"rating"`
+	Thumbnail   string `xml:"thumbnail"`
+	Image       string `xml:"image"`
+	Marquee     string `xml:"marquee"`
 }
 
 // GameListEntry holds a parsed gamelist.xml entry
 type GameListEntry struct {
-	Filename string // e.g. "1944j.zip"
-	Name     string // e.g. "1944 ザ・ループマスター"
+	Filename    string
+	Name        string
+	Desc        string
+	ReleaseDate string
+	Developer   string
+	Publisher   string
+	Genre       string
+	Players     string
+	Rating      string
+	Thumbnail   string
+	Image       string
+	Marquee     string
 }
 
 // ParseGameList parses an EmulationStation gamelist.xml file
@@ -44,8 +64,18 @@ func ParseGameList(path string) ([]GameListEntry, error) {
 		name := strings.TrimSpace(g.Name)
 		if filename != "" && name != "" {
 			entries = append(entries, GameListEntry{
-				Filename: filename,
-				Name:     name,
+				Filename:    filename,
+				Name:        name,
+				Desc:        strings.TrimSpace(g.Desc),
+				ReleaseDate: strings.TrimSpace(g.ReleaseDate),
+				Developer:   strings.TrimSpace(g.Developer),
+				Publisher:   strings.TrimSpace(g.Publisher),
+				Genre:       strings.TrimSpace(g.Genre),
+				Players:     strings.TrimSpace(g.Players),
+				Rating:      strings.TrimSpace(g.Rating),
+				Thumbnail:   strings.TrimSpace(g.Thumbnail),
+				Image:       strings.TrimSpace(g.Image),
+				Marquee:     strings.TrimSpace(g.Marquee),
 			})
 		}
 	}
