@@ -24,6 +24,7 @@ type RomFile struct {
 	Platform  string
 	GameID    *int64
 	TitleEN   *string // joined from games
+	TitleJA   *string // joined from games
 }
 
 type Game struct {
@@ -114,7 +115,7 @@ func (d *DB) UpsertRomFile(path, filename string, size int64, crc32, md5, sha1, 
 
 func (d *DB) ListRomFiles() ([]RomFile, error) {
 	rows, err := d.Query(`
-		SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en
+		SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en, g.title_ja
 		FROM rom_files r LEFT JOIN games g ON r.game_id = g.id
 		ORDER BY r.platform, r.filename
 	`)
@@ -125,7 +126,7 @@ func (d *DB) ListRomFiles() ([]RomFile, error) {
 	var files []RomFile
 	for rows.Next() {
 		var f RomFile
-		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN); err != nil {
+		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN, &f.TitleJA); err != nil {
 			return nil, err
 		}
 		files = append(files, f)
@@ -188,6 +189,68 @@ func (d *DB) ImportDATGames(roms []DATRom) (int, error) {
 	}
 
 	return count, tx.Commit()
+}
+
+// MatchByGameList matches rom_files to games using filename from gamelist.xml
+// It creates games with title_ja and links them to rom_files by filename match.
+func (d *DB) MatchByGameList(entries []GameListEntry, platform string) (created int, matched int, err error) {
+	tx, err := d.Begin()
+	if err != nil {
+		return 0, 0, err
+	}
+	defer tx.Rollback()
+
+	for _, e := range entries {
+		// Find rom_files matching this filename and platform
+		// Match exact filename, or "zipname/inner" pattern, or path containing the zip name
+		rows, err := tx.Query(
+			`SELECT id FROM rom_files WHERE platform = ? AND (filename = ? OR filename LIKE ? OR filename LIKE ?)`,
+			platform, e.Filename, "%/"+e.Filename, e.Filename+"/%",
+		)
+		if err != nil {
+			return 0, 0, err
+		}
+		var romIDs []int64
+		for rows.Next() {
+			var id int64
+			rows.Scan(&id)
+			romIDs = append(romIDs, id)
+		}
+		rows.Close()
+
+		if len(romIDs) == 0 {
+			continue
+		}
+
+		// Find or create game
+		var gameID int64
+		err = tx.QueryRow(`SELECT id FROM games WHERE title_ja = ? AND platform = ?`, e.Name, platform).Scan(&gameID)
+		if err != nil {
+			res, err := tx.Exec(`INSERT INTO games (title_ja, platform) VALUES (?, ?)`, e.Name, platform)
+			if err != nil {
+				return 0, 0, fmt.Errorf("insert game %q: %w", e.Name, err)
+			}
+			gameID, _ = res.LastInsertId()
+			created++
+		}
+
+		// Link rom_files to game
+		for _, rid := range romIDs {
+			_, err = tx.Exec(`UPDATE rom_files SET game_id = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`, gameID, rid)
+			if err != nil {
+				return 0, 0, err
+			}
+			matched++
+		}
+	}
+
+	return created, matched, tx.Commit()
+}
+
+// GameListEntry for import
+type GameListEntry struct {
+	Filename string
+	Name     string
 }
 
 // MatchByHash matches rom_files to games using DAT ROM info

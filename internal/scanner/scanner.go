@@ -215,9 +215,10 @@ func scanZipContents(zipPath, platform string, zipSize int64, database *db.DB, r
 			continue
 		}
 
-		// Store path as zipPath, display name as inner file name
+		// Store path as zipPath!innerName to make it unique per entry
+		entryPath := zipPath + "!" + f.Name
 		displayName := filepath.Base(zipPath) + "/" + f.Name
-		err = database.UpsertRomFile(zipPath, displayName, int64(f.UncompressedSize64), crc, md5h, sha1h, platform)
+		err = database.UpsertRomFile(entryPath, displayName, int64(f.UncompressedSize64), crc, md5h, sha1h, platform)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "db error %s!%s: %v\n", zipPath, f.Name, err)
 			result.Errors++
@@ -250,6 +251,14 @@ func hashZipEntry(f *zip.File) (string, string, string, error) {
 		strings.ToUpper(hex.EncodeToString(md5H.Sum(nil))),
 		strings.ToUpper(hex.EncodeToString(sha1H.Sum(nil))),
 		nil
+}
+
+// DetectPlatformFromFolder returns the platform code for a folder name
+func DetectPlatformFromFolder(name string) string {
+	if p, ok := platformFolders[name]; ok {
+		return p
+	}
+	return ""
 }
 
 func detectPlatform(root, path string) string {

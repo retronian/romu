@@ -1,9 +1,11 @@
 package dat
 
 import (
+	"bufio"
 	"encoding/xml"
 	"fmt"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 
@@ -12,8 +14,8 @@ import (
 
 // No-Intro DAT XML structure
 type Datafile struct {
-	XMLName xml.Name `xml:"datafile"`
-	Header  Header   `xml:"header"`
+	XMLName xml.Name  `xml:"datafile"`
+	Header  Header    `xml:"header"`
 	Games   []XMLGame `xml:"game"`
 }
 
@@ -28,14 +30,14 @@ type XMLGame struct {
 }
 
 type XMLRom struct {
-	Name  string `xml:"name,attr"`
-	Size  string `xml:"size,attr"`
-	CRC   string `xml:"crc,attr"`
-	MD5   string `xml:"md5,attr"`
-	SHA1  string `xml:"sha1,attr"`
+	Name string `xml:"name,attr"`
+	Size string `xml:"size,attr"`
+	CRC  string `xml:"crc,attr"`
+	MD5  string `xml:"md5,attr"`
+	SHA1 string `xml:"sha1,attr"`
 }
 
-// ParseDAT parses a No-Intro DAT XML file and returns DATRom entries
+// ParseDAT parses a No-Intro DAT file (XML or ClrMamePro format)
 func ParseDAT(path string, platform string) ([]db.DATRom, string, error) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -43,13 +45,25 @@ func ParseDAT(path string, platform string) ([]db.DATRom, string, error) {
 	}
 	defer f.Close()
 
+	// Peek at first line to detect format
+	scanner := bufio.NewScanner(f)
+	scanner.Scan()
+	firstLine := strings.TrimSpace(scanner.Text())
+	f.Seek(0, 0)
+
+	if strings.HasPrefix(firstLine, "clrmamepro") || strings.HasPrefix(firstLine, "clrmamepro (") {
+		return parseClrMamePro(f, platform)
+	}
+	return parseXML(f, platform)
+}
+
+func parseXML(f *os.File, platform string) ([]db.DATRom, string, error) {
 	var datafile Datafile
 	dec := xml.NewDecoder(f)
 	if err := dec.Decode(&datafile); err != nil {
 		return nil, "", fmt.Errorf("parse DAT XML: %w", err)
 	}
 
-	// Auto-detect platform from header if not specified
 	if platform == "" {
 		platform = detectPlatformFromHeader(datafile.Header.Name)
 	}
@@ -71,36 +85,130 @@ func ParseDAT(path string, platform string) ([]db.DATRom, string, error) {
 			})
 		}
 	}
-
 	return roms, datafile.Header.Name, nil
+}
+
+// ClrMamePro format parser
+var clrRomLineRe = regexp.MustCompile(`rom\s*\(\s*name\s+"([^"]+)"\s+size\s+(\d+)\s+crc\s+(\w+)\s+md5\s+(\w+)\s+sha1\s+(\w+)\s*\)`)
+
+func parseClrMamePro(f *os.File, platform string) ([]db.DATRom, string, error) {
+	scanner := bufio.NewScanner(f)
+	scanner.Buffer(make([]byte, 1024*1024), 1024*1024)
+
+	headerName := ""
+	var roms []db.DATRom
+	currentGame := ""
+
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+
+		// Header name
+		if strings.HasPrefix(line, `name "`) {
+			val := extractQuoted(line, "name")
+			if headerName == "" {
+				headerName = val
+			}
+		}
+
+		// Game block start
+		if strings.HasPrefix(line, "game (") || line == "game (" {
+			currentGame = ""
+		}
+
+		// Game name inside block
+		if currentGame == "" && strings.HasPrefix(line, `name "`) {
+			currentGame = extractQuoted(line, "name")
+		}
+
+		// ROM line (can be inline with game or separate)
+		if strings.Contains(line, "rom (") || strings.HasPrefix(line, "rom (") {
+			m := clrRomLineRe.FindStringSubmatch(line)
+			if m != nil {
+				gameName := currentGame
+				if gameName == "" {
+					// Try to extract from rom filename
+					gameName = m[1]
+				}
+				size, _ := strconv.ParseInt(m[2], 10, 64)
+				roms = append(roms, db.DATRom{
+					GameTitle: gameName,
+					Platform:  "", // set below
+					CRC32:     strings.ToUpper(m[3]),
+					MD5:       strings.ToUpper(m[4]),
+					SHA1:      strings.ToUpper(m[5]),
+					Size:      size,
+				})
+			}
+		}
+	}
+
+	if platform == "" {
+		platform = detectPlatformFromHeader(headerName)
+	}
+	if platform == "" {
+		return nil, "", fmt.Errorf("cannot detect platform from DAT header %q, use --platform flag", headerName)
+	}
+
+	// Set platform on all roms
+	for i := range roms {
+		roms[i].Platform = platform
+	}
+
+	return roms, headerName, nil
+}
+
+func extractQuoted(line, key string) string {
+	prefix := key + ` "`
+	idx := strings.Index(line, prefix)
+	if idx < 0 {
+		return ""
+	}
+	start := idx + len(prefix)
+	end := strings.Index(line[start:], `"`)
+	if end < 0 {
+		return line[start:]
+	}
+	return line[start : start+end]
 }
 
 func detectPlatformFromHeader(name string) string {
 	lower := strings.ToLower(name)
 	patterns := map[string]string{
-		"nintendo - nes":                    "FC",
-		"nintendo - nintendo entertainment system": "FC",
-		"nintendo - famicom":                "FC",
-		"nintendo - super nintendo":         "SFC",
-		"nintendo - super famicom":          "SFC",
-		"nintendo - game boy -":             "GB",
-		"nintendo - game boy color":         "GBC",
-		"nintendo - game boy advance":       "GBA",
-		"sega - mega drive":                 "MD",
-		"sega - genesis":                    "MD",
-		"sony - playstation":                "PS1",
-		"nintendo - nintendo 64":            "N64",
-		"nintendo - nintendo ds":            "NDS",
-		"nec - pc engine":                   "PCE",
-		"sega - game gear":                  "GG",
-		"sega - master system":              "SMS",
-		"bandai - wonderswan -":             "WS",
-		"bandai - wonderswan color":         "WSC",
-		"snk - neo geo pocket":              "NGP",
+		"nintendo entertainment system":     "FC",
+		"famicom":                           "FC",
+		"super nintendo":                    "SFC",
+		"super famicom":                     "SFC",
+		"game boy advance":                  "GBA",
+		"game boy color":                    "GBC",
+		"game boy":                          "GB",
+		"mega drive":                        "MD",
+		"genesis":                           "MD",
+		"playstation":                       "PS1",
+		"nintendo 64":                       "N64",
+		"nintendo ds":                       "NDS",
+		"pc engine":                         "PCE",
+		"turbografx":                        "PCE",
+		"game gear":                         "GG",
+		"master system":                     "SMS",
+		"wonderswan color":                  "WSC",
+		"wonderswan":                        "WS",
+		"neo geo pocket":                    "NGP",
 	}
-	for pattern, platform := range patterns {
+	// Check longer patterns first to avoid false matches
+	order := []string{
+		"game boy advance", "game boy color", "game boy",
+		"wonderswan color", "wonderswan",
+		"super nintendo", "super famicom",
+		"nintendo entertainment system", "famicom",
+		"mega drive", "genesis",
+		"nintendo 64", "nintendo ds",
+		"pc engine", "turbografx",
+		"game gear", "master system",
+		"neo geo pocket", "playstation",
+	}
+	for _, pattern := range order {
 		if strings.Contains(lower, pattern) {
-			return platform
+			return patterns[pattern]
 		}
 	}
 	return ""

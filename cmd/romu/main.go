@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 	"text/tabwriter"
 
 	"github.com/retronian/romu/internal/dat"
@@ -23,6 +25,8 @@ func main() {
 		cmdList()
 	case "import-dat":
 		cmdImportDAT()
+	case "import-gamelist":
+		cmdImportGameList()
 	case "match":
 		cmdMatch()
 	case "help", "--help", "-h":
@@ -42,6 +46,7 @@ Usage:
   romu list                     List registered ROMs
   romu import-dat <dat-file>    Import a No-Intro DAT file
                                 [--platform XX] to override auto-detection
+  romu import-gamelist <dir>    Import all gamelist.xml from ROM directory
   romu match                    Match ROMs to games by hash
   romu help                     Show this help`)
 }
@@ -94,13 +99,76 @@ func cmdList() {
 	fmt.Fprintln(w, "PLATFORM\tFILENAME\tSIZE\tCRC32\tGAME")
 	for _, f := range files {
 		game := "-"
-		if f.TitleEN != nil {
+		if f.TitleJA != nil {
+			game = *f.TitleJA
+		} else if f.TitleEN != nil {
 			game = *f.TitleEN
 		}
 		fmt.Fprintf(w, "%s\t%s\t%d\t%s\t%s\n", f.Platform, f.Filename, f.Size, f.HashCRC32, game)
 	}
 	w.Flush()
 	fmt.Printf("\nTotal: %d ROMs\n", len(files))
+}
+
+func cmdImportGameList() {
+	if len(os.Args) < 3 {
+		fmt.Fprintln(os.Stderr, "usage: romu import-gamelist <roms-dir>")
+		fmt.Fprintln(os.Stderr, "  Scans for gamelist.xml in platform subdirectories")
+		os.Exit(1)
+	}
+	romsDir := os.Args[2]
+
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	// Walk romsDir for gamelist.xml files
+	totalCreated, totalMatched := 0, 0
+	err = filepath.Walk(romsDir, func(path string, info os.FileInfo, err error) error {
+		if err != nil || info.IsDir() || info.Name() != "gamelist.xml" {
+			return nil
+		}
+
+		// Detect platform from parent directory name
+		parentDir := strings.ToLower(filepath.Base(filepath.Dir(path)))
+		platform := scanner.DetectPlatformFromFolder(parentDir)
+		if platform == "" {
+			fmt.Printf("  skip %s (unknown platform: %s)\n", path, parentDir)
+			return nil
+		}
+
+		entries, err := dat.ParseGameList(path)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "  error %s: %v\n", path, err)
+			return nil
+		}
+
+		// Convert to db entries
+		dbEntries := make([]db.GameListEntry, len(entries))
+		for i, e := range entries {
+			dbEntries[i] = db.GameListEntry{Filename: e.Filename, Name: e.Name}
+		}
+
+		created, matched, err := database.MatchByGameList(dbEntries, platform)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "  error %s: %v\n", path, err)
+			return nil
+		}
+
+		fmt.Printf("  [%s] %s: %d games created, %d ROMs matched\n", platform, parentDir, created, matched)
+		totalCreated += created
+		totalMatched += matched
+		return nil
+	})
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "walk error: %v\n", err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("\nTotal: %d games created, %d ROMs matched\n", totalCreated, totalMatched)
 }
 
 func cmdImportDAT() {
