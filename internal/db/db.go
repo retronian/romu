@@ -253,6 +253,120 @@ type GameListEntry struct {
 	Name     string
 }
 
+// SearchResult holds a ROM search result
+type SearchResult struct {
+	Platform string
+	Filename string
+	Title    string
+}
+
+// SearchRoms searches ROMs by title/filename with optional platform filter
+func (d *DB) SearchRoms(query, platform string, page, perPage int) ([]RomFile, int, error) {
+	if perPage <= 0 {
+		perPage = 50
+	}
+	if page <= 0 {
+		page = 1
+	}
+	offset := (page - 1) * perPage
+	q := "%" + query + "%"
+
+	baseWhere := `FROM rom_files r LEFT JOIN games g ON r.game_id = g.id
+		WHERE (r.filename LIKE ? OR g.title_ja LIKE ? OR g.title_en LIKE ?)`
+	args := []interface{}{q, q, q}
+	if platform != "" {
+		baseWhere += ` AND r.platform = ?`
+		args = append(args, platform)
+	}
+
+	var total int
+	err := d.QueryRow("SELECT COUNT(*) "+baseWhere, args...).Scan(&total)
+	if err != nil {
+		return nil, 0, err
+	}
+
+	selectArgs := append(args, perPage, offset)
+	rows, err := d.Query(`SELECT r.id, r.path, r.filename, r.size, r.hash_crc32, r.hash_md5, r.hash_sha1, r.platform, r.game_id, g.title_en, g.title_ja `+baseWhere+` ORDER BY r.platform, r.filename LIMIT ? OFFSET ?`, selectArgs...)
+	if err != nil {
+		return nil, 0, err
+	}
+	defer rows.Close()
+	var files []RomFile
+	for rows.Next() {
+		var f RomFile
+		if err := rows.Scan(&f.ID, &f.Path, &f.Filename, &f.Size, &f.HashCRC32, &f.HashMD5, &f.HashSHA1, &f.Platform, &f.GameID, &f.TitleEN, &f.TitleJA); err != nil {
+			return nil, 0, err
+		}
+		files = append(files, f)
+	}
+	return files, total, rows.Err()
+}
+
+// PlatformStats holds stats for one platform
+type PlatformStats struct {
+	Platform  string `json:"platform"`
+	Total     int    `json:"total"`
+	Matched   int    `json:"matched"`
+	Unmatched int    `json:"unmatched"`
+	HasTitleEN int   `json:"has_title_en"`
+	HasTitleJA int   `json:"has_title_ja"`
+}
+
+// Stats holds overall collection stats
+type Stats struct {
+	Platforms []PlatformStats `json:"platforms"`
+	Total     int             `json:"total"`
+	Matched   int             `json:"matched"`
+	Unmatched int             `json:"unmatched"`
+}
+
+// GetStats returns collection statistics
+func (d *DB) GetStats() (*Stats, error) {
+	rows, err := d.Query(`
+		SELECT r.platform,
+			COUNT(*) as total,
+			COUNT(r.game_id) as matched,
+			COUNT(*) - COUNT(r.game_id) as unmatched,
+			COUNT(g.title_en) as has_en,
+			COUNT(g.title_ja) as has_ja
+		FROM rom_files r LEFT JOIN games g ON r.game_id = g.id
+		GROUP BY r.platform ORDER BY r.platform
+	`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	s := &Stats{}
+	for rows.Next() {
+		var p PlatformStats
+		if err := rows.Scan(&p.Platform, &p.Total, &p.Matched, &p.Unmatched, &p.HasTitleEN, &p.HasTitleJA); err != nil {
+			return nil, err
+		}
+		s.Total += p.Total
+		s.Matched += p.Matched
+		s.Unmatched += p.Unmatched
+		s.Platforms = append(s.Platforms, p)
+	}
+	return s, rows.Err()
+}
+
+// GetPlatforms returns list of distinct platforms
+func (d *DB) GetPlatforms() ([]string, error) {
+	rows, err := d.Query(`SELECT DISTINCT platform FROM rom_files ORDER BY platform`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var platforms []string
+	for rows.Next() {
+		var p string
+		rows.Scan(&p)
+		platforms = append(platforms, p)
+	}
+	return platforms, rows.Err()
+}
+
 // MatchByHash matches rom_files to games using DAT ROM info
 func (d *DB) MatchROMs(datRoms []DATRom) (int, error) {
 	tx, err := d.Begin()

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>romu — ROM Collection Manager</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#14141f;--border:#2a2a3a;--text:#e0e0e0;--dim:#888;--accent:#ff6b9d;--accent2:#c084fc;--green:#4ade80;--yellow:#fbbf24}
+body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);min-height:100vh}
+.header{background:linear-gradient(135deg,#1a0a2e,#0a1628);border-bottom:2px solid var(--accent);padding:1.5rem 2rem;text-align:center}
+.header h1{font-size:2rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.3em}
+.header p{color:var(--dim);font-size:.8rem;margin-top:.3rem}
+.container{max-width:1200px;margin:0 auto;padding:1.5rem}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.tab{padding:.6rem 1.2rem;background:var(--surface);border:1px solid var(--border);color:var(--dim);cursor:pointer;font-family:inherit;font-size:.85rem;transition:.2s}
+.tab.active{color:var(--accent);border-color:var(--accent)}
+.tab:hover{color:var(--text)}
+.controls{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+input,select{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.5rem .8rem;font-family:inherit;font-size:.85rem;outline:none}
+input:focus,select:focus{border-color:var(--accent)}
+input{flex:1;min-width:200px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:.5rem .8rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px}
+th{color:var(--accent);text-transform:uppercase;font-size:.7rem;letter-spacing:.1em}
+tr:hover td{background:rgba(255,107,157,.05)}
+.pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1rem;color:var(--dim);font-size:.8rem}
+.pagination button{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.3rem .8rem;cursor:pointer;font-family:inherit}
+.pagination button:disabled{opacity:.3;cursor:default}
+.pagination button:hover:not(:disabled){border-color:var(--accent)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-bottom:2rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);padding:1.2rem}
+.stat-card h3{color:var(--accent);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.8rem}
+.stat-card .number{font-size:2rem;color:var(--text)}
+.stat-card .sub{color:var(--dim);font-size:.75rem;margin-top:.3rem}
+.chart{background:var(--surface);border:1px solid var(--border);padding:1.5rem}
+.chart h3{color:var(--accent);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:1rem}
+.bar-row{display:flex;align-items:center;margin-bottom:.5rem;font-size:.8rem}
+.bar-label{width:50px;color:var(--dim);text-align:right;margin-right:.8rem}
+.bar-track{flex:1;height:20px;background:var(--bg);border:1px solid var(--border);position:relative}
+.bar-fill{height:100%;transition:width .5s}
+.bar-matched{background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.bar-unmatched{background:var(--border)}
+.bar-count{margin-left:.5rem;color:var(--dim);min-width:40px}
+#roms-view,#stats-view{display:none}
+#roms-view.active,#stats-view.active{display:block}
+@media(max-width:600px){.container{padding:.8rem}th,td{padding:.3rem .4rem;font-size:.7rem}.header h1{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🎮 ROMU</h1>
+<p>ROM Collection Manager</p>
+</div>
+<div class="container">
+<div class="tabs">
+<button class="tab active" onclick="showTab('roms')">ROM一覧</button>
+<button class="tab" onclick="showTab('stats')">統計</button>
+</div>
+<div id="roms-view" class="active">
+<div class="controls">
+<input type="text" id="search" placeholder="🔍 検索 (タイトル / ファイル名)..." oninput="debounceSearch()">
+<select id="platform-filter" onchange="loadRoms()"><option value="">全プラットフォーム</option></select>
+</div>
+<table><thead><tr><th>Platform</th><th>Filename</th><th>Title</th><th>Size</th></tr></thead><tbody id="rom-body"></tbody></table>
+<div class="pagination">
+<button id="prev-btn" onclick="changePage(-1)">◀ Prev</button>
+<span id="page-info"></span>
+<button id="next-btn" onclick="changePage(1)">Next ▶</button>
+</div>
+</div>
+<div id="stats-view">
+<div class="stats-grid">
+<div class="stat-card"><h3>Total ROMs</h3><div class="number" id="total-roms">-</div></div>
+<div class="stat-card"><h3>Matched</h3><div class="number" id="total-matched">-</div><div class="sub" id="match-pct"></div></div>
+<div class="stat-card"><h3>Unmatched</h3><div class="number" id="total-unmatched">-</div></div>
+<div class="stat-card"><h3>Platforms</h3><div class="number" id="total-platforms">-</div></div>
+</div>
+<div class="chart"><h3>プラットフォーム別</h3><div id="chart-bars"></div></div>
+</div>
+</div>
+<script>
+let page=1,perPage=50,searchTimer;
+function debounceSearch(){clearTimeout(searchTimer);searchTimer=setTimeout(()=>{page=1;loadRoms()},300)}
+function showTab(t){document.querySelectorAll('.tab').forEach((e,i)=>e.classList.toggle('active',i===(t==='roms'?0:1)));document.getElementById('roms-view').classList.toggle('active',t==='roms');document.getElementById('stats-view').classList.toggle('active',t==='stats');if(t==='stats')loadStats()}
+function changePage(d){page+=d;loadRoms()}
+function fmt(n){if(n>=1e9)return(n/1e9).toFixed(1)+'G';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
+async function loadRoms(){const q=document.getElementById('search').value;const p=document.getElementById('platform-filter').value;const r=await fetch(`/api/roms?q=${encodeURIComponent(q)}&platform=${encodeURIComponent(p)}&page=${page}&per_page=${perPage}`);const d=await r.json();const b=document.getElementById('rom-body');b.innerHTML=d.roms.map(r=>`<tr><td>${r.platform}</td><td title="${r.filename}">${r.filename}</td><td title="${r.title}">${r.title}</td><td>${fmt(r.size)}</td></tr>`).join('');const tp=Math.ceil(d.total/perPage)||1;document.getElementById('page-info').textContent=`${page} / ${tp} (${d.total} ROMs)`;document.getElementById('prev-btn').disabled=page<=1;document.getElementById('next-btn').disabled=page>=tp}
+async function loadPlatforms(){const r=await fetch('/api/platforms');const d=await r.json();const s=document.getElementById('platform-filter');(d||[]).forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;s.appendChild(o)})}
+async function loadStats(){const r=await fetch('/api/stats');const d=await r.json();document.getElementById('total-roms').textContent=d.total;document.getElementById('total-matched').textContent=d.matched;document.getElementById('match-pct').textContent=d.total?`${(d.matched/d.total*100).toFixed(1)}%`:'';document.getElementById('total-unmatched').textContent=d.unmatched;document.getElementById('total-platforms').textContent=(d.platforms||[]).length;const mx=Math.max(...(d.platforms||[]).map(p=>p.total),1);document.getElementById('chart-bars').innerHTML=(d.platforms||[]).map(p=>`<div class="bar-row"><span class="bar-label">${p.platform}</span><div class="bar-track"><div class="bar-fill bar-matched" style="width:${p.matched/mx*100}%"></div></div><span class="bar-count">${p.total}</span></div>`).join('')}
+loadPlatforms();loadRoms()
+</script>
+</body>
+</html>

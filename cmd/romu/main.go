@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"text/tabwriter"
 
 	"github.com/retronian/romu/internal/dat"
 	"github.com/retronian/romu/internal/db"
 	"github.com/retronian/romu/internal/scanner"
+	"github.com/retronian/romu/internal/server"
 )
 
 func main() {
@@ -23,6 +25,12 @@ func main() {
 		cmdScan()
 	case "list":
 		cmdList()
+	case "search":
+		cmdSearch()
+	case "stats":
+		cmdStats()
+	case "server":
+		cmdServer()
 	case "import-dat":
 		cmdImportDAT()
 	case "import-gamelist":
@@ -44,11 +52,111 @@ func usage() {
 Usage:
   romu scan <path>              Scan a ROM directory recursively
   romu list                     List registered ROMs
+  romu search <query>           Search ROMs by title/filename
+                                [--platform XX] to filter by platform
+  romu stats                    Show collection statistics
+  romu server                   Start web UI server
+                                [--port XXXX] (default: 8080)
   romu import-dat <dat-file>    Import a No-Intro DAT file
                                 [--platform XX] to override auto-detection
   romu import-gamelist <dir>    Import all gamelist.xml from ROM directory
   romu match                    Match ROMs to games by hash
   romu help                     Show this help`)
+}
+
+func cmdSearch() {
+	if len(os.Args) < 3 {
+		fmt.Fprintln(os.Stderr, "usage: romu search <query> [--platform XX]")
+		os.Exit(1)
+	}
+	query := os.Args[2]
+	platform := ""
+	for i := 3; i < len(os.Args)-1; i++ {
+		if os.Args[i] == "--platform" {
+			platform = os.Args[i+1]
+		}
+	}
+
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	files, total, err := database.SearchRoms(query, platform, 1, 100)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "search error: %v\n", err)
+		os.Exit(1)
+	}
+
+	if len(files) == 0 {
+		fmt.Printf("No results for %q\n", query)
+		return
+	}
+
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(w, "PLATFORM\tFILENAME\tTITLE")
+	for _, f := range files {
+		title := "-"
+		if f.TitleJA != nil {
+			title = *f.TitleJA
+		} else if f.TitleEN != nil {
+			title = *f.TitleEN
+		}
+		fmt.Fprintf(w, "%s\t%s\t%s\n", f.Platform, f.Filename, title)
+	}
+	w.Flush()
+	fmt.Printf("\nFound: %d ROMs\n", total)
+}
+
+func cmdStats() {
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	stats, err := database.GetStats()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "stats error: %v\n", err)
+		os.Exit(1)
+	}
+
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
+	fmt.Fprintln(w, "PLATFORM\tTOTAL\tMATCHED\tUNMATCHED\tTITLE_EN\tTITLE_JA")
+	for _, p := range stats.Platforms {
+		fmt.Fprintf(w, "%s\t%d\t%d\t%d\t%d\t%d\n", p.Platform, p.Total, p.Matched, p.Unmatched, p.HasTitleEN, p.HasTitleJA)
+	}
+	fmt.Fprintf(w, "---\t---\t---\t---\t---\t---\n")
+	fmt.Fprintf(w, "TOTAL\t%d\t%d\t%d\t\t\n", stats.Total, stats.Matched, stats.Unmatched)
+	w.Flush()
+}
+
+func cmdServer() {
+	port := 8080
+	for i := 2; i < len(os.Args)-1; i++ {
+		if os.Args[i] == "--port" {
+			p, err := strconv.Atoi(os.Args[i+1])
+			if err == nil {
+				port = p
+			}
+		}
+	}
+
+	database, err := db.Open()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "db error: %v\n", err)
+		os.Exit(1)
+	}
+	defer database.Close()
+
+	srv := server.New(database, port)
+	if err := srv.Start(); err != nil {
+		fmt.Fprintf(os.Stderr, "server error: %v\n", err)
+		os.Exit(1)
+	}
 }
 
 func cmdScan() {
