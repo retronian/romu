@@ -9,47 +9,48 @@
 :root{--bg:#0a0a0f;--surface:#14141f;--border:#2a2a3a;--text:#e0e0e0;--dim:#888;--accent:#ff6b9d;--accent2:#c084fc;--green:#4ade80;--yellow:#fbbf24}
 body{font-family:'Courier New',monospace;background:var(--bg);color:var(--text);min-height:100vh}
 a{color:inherit;text-decoration:none}
-.header{background:linear-gradient(135deg,#1a0a2e,#0a1628);border-bottom:2px solid var(--accent);padding:1.5rem 2rem;text-align:center;cursor:pointer}
-.header h1{font-size:2rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.3em}
-.header p{color:var(--dim);font-size:.8rem;margin-top:.3rem}
-.container{max-width:1200px;margin:0 auto;padding:1.5rem;transition:margin-right .3s}
+.header{background:linear-gradient(135deg,#1a0a2e,#0a1628);border-bottom:2px solid var(--accent);padding:1.2rem 2rem;text-align:center;cursor:pointer}
+.header h1{font-size:1.8rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:.3em}
+.header p{color:var(--dim);font-size:.75rem;margin-top:.2rem}
+.container{max-width:1400px;margin:0 auto;padding:1.5rem;transition:margin-right .3s}
 .container.panel-open{margin-right:420px}
 
 /* Breadcrumb */
-.breadcrumb{font-size:.8rem;color:var(--dim);margin-bottom:1.2rem}
+.breadcrumb{font-size:.8rem;color:var(--dim);margin-bottom:1rem}
 .breadcrumb a{color:var(--accent);cursor:pointer}
 .breadcrumb a:hover{text-decoration:underline}
 .breadcrumb span{margin:0 .4rem}
 
 /* Platform Grid */
-.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
-.platform-card{background:var(--surface);border:1px solid var(--border);padding:1.5rem;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
-.platform-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.platform-card .platform-name{font-size:1.3rem;font-weight:bold;color:var(--text);margin-bottom:.5rem}
-.platform-card .platform-count{font-size:2rem;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold}
-.platform-card .platform-sub{color:var(--dim);font-size:.75rem;margin-top:.3rem}
-.platform-card .platform-bar{height:3px;background:var(--border);margin-top:.8rem;border-radius:2px;overflow:hidden}
-.platform-card .platform-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px}
+.platform-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.platform-card{background:var(--surface);border:1px solid var(--border);cursor:pointer;transition:.2s;overflow:hidden;border-radius:6px}
+.platform-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 24px rgba(255,107,157,.15)}
+.platform-icon{height:120px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.platform-icon .platform-bg{position:absolute;inset:0;opacity:.15}
+.platform-icon .platform-emoji{position:relative;z-index:1;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.platform-info{padding:1rem}
+.platform-info .platform-name{font-size:1.1rem;font-weight:bold;color:var(--text)}
+.platform-info .platform-full{font-size:.7rem;color:var(--dim);margin-top:.2rem}
+.platform-info .platform-count{font-size:1.5rem;font-weight:bold;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:.3rem}
+.platform-info .platform-sub{font-size:.65rem;color:var(--dim);margin-top:.2rem}
+.platform-bar{height:3px;background:var(--border);margin-top:.6rem;border-radius:2px;overflow:hidden}
+.platform-bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px}
 
-/* ROM list */
-.controls{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
-input,select{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.5rem .8rem;font-family:inherit;font-size:.85rem;outline:none}
-input:focus,select:focus{border-color:var(--accent)}
-input{flex:1;min-width:200px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:.5rem .8rem;text-align:left;border-bottom:1px solid var(--border);font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px}
-th{color:var(--accent);text-transform:uppercase;font-size:.7rem;letter-spacing:.1em}
-tr.rom-row{cursor:pointer;transition:background .15s}
-tr.rom-row:hover td{background:rgba(255,107,157,.08)}
-tr.rom-row.selected td{background:rgba(255,107,157,.15)}
-.rom-thumb{width:40px;height:40px;object-fit:cover;border-radius:4px;vertical-align:middle;background:var(--bg)}
-.rom-thumb-placeholder{width:40px;height:40px;background:var(--bg);border:1px solid var(--border);border-radius:4px;display:inline-flex;align-items:center;justify-content:center;color:var(--dim);font-size:1rem}
-td.td-title{white-space:normal;max-width:none}
-.title-main{font-size:.95rem;font-weight:bold;color:var(--text);line-height:1.4}
-.title-sub{font-size:.75rem;color:var(--dim);line-height:1.3;margin-top:.1rem}
-td.td-thumb{width:50px;padding:.3rem .5rem}
-.pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1rem;color:var(--dim);font-size:.8rem}
-.pagination button{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.3rem .8rem;cursor:pointer;font-family:inherit}
+/* ROM Tile Grid */
+.controls{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;align-items:center}
+input{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.5rem .8rem;font-family:inherit;font-size:.85rem;outline:none;flex:1;min-width:200px}
+input:focus{border-color:var(--accent)}
+.rom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.8rem}
+.rom-tile{background:var(--surface);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:.2s;overflow:hidden}
+.rom-tile:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 16px rgba(255,107,157,.12)}
+.rom-tile-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--bg);display:block}
+.rom-tile-placeholder{width:100%;aspect-ratio:1/1;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:var(--border)}
+.rom-tile-info{padding:.5rem .6rem}
+.rom-tile-title{font-size:.75rem;font-weight:bold;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2em}
+.rom-tile-sub{font-size:.6rem;color:var(--dim);margin-top:.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:1.2rem;color:var(--dim);font-size:.8rem}
+.pagination button{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.3rem .8rem;cursor:pointer;font-family:inherit;border-radius:4px}
 .pagination button:disabled{opacity:.3;cursor:default}
 .pagination button:hover:not(:disabled){border-color:var(--accent)}
 
@@ -80,7 +81,7 @@ td.td-thumb{width:50px;padding:.3rem .5rem}
 #platforms-view,#roms-view{display:none}
 #platforms-view.active,#roms-view.active{display:block}
 
-@media(max-width:600px){.container{padding:.8rem}th,td{padding:.3rem .4rem;font-size:.7rem}.header h1{font-size:1.3rem}.side-panel{width:100%;right:-100%}.container.panel-open{margin-right:0}.platform-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+@media(max-width:600px){.container{padding:.8rem}.header h1{font-size:1.3rem}.side-panel{width:100%;right:-100%}.container.panel-open{margin-right:0}.platform-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.rom-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}}
 </style>
 </head>
 <body>
@@ -99,7 +100,7 @@ td.td-thumb{width:50px;padding:.3rem .5rem}
 <div class="controls">
 <input type="text" id="search" placeholder="🔍 検索 (タイトル / ファイル名)..." oninput="debounceSearch()">
 </div>
-<table><thead><tr><th></th><th>タイトル</th><th>Size</th></tr></thead><tbody id="rom-body"></tbody></table>
+<div class="rom-grid" id="rom-grid"></div>
 <div class="pagination">
 <button id="prev-btn" onclick="changePage(-1)">◀ Prev</button>
 <span id="page-info"></span>
@@ -122,20 +123,26 @@ td.td-thumb{width:50px;padding:.3rem .5rem}
 </div>
 
 <script>
-let page=1,perPage=50,searchTimer,currentRoms=[],currentPlatform='',platformStats=[];
+let page=1,perPage=120,searchTimer,currentRoms=[],currentPlatform='';
 
-const PLATFORM_NAMES={
-  FC:'Famicom / NES',SFC:'Super Famicom / SNES',GB:'Game Boy',GBC:'Game Boy Color',
-  GBA:'Game Boy Advance',N64:'Nintendo 64',NDS:'Nintendo DS',MD:'Mega Drive / Genesis',
-  SMS:'Master System',GG:'Game Gear',PCE:'PC Engine',NGP:'Neo Geo Pocket',
-  WS:'WonderSwan',WSC:'WonderSwan Color',MAME:'Arcade (MAME)',FBN:'Arcade (FBNeo)',
-  PS1:'PlayStation',PSP:'PSP',ARCADE:'Arcade'
-};
-
-const PLATFORM_EMOJI={
-  FC:'🎮',SFC:'🎮',GB:'📱',GBC:'📱',GBA:'📱',N64:'🕹️',NDS:'📱',
-  MD:'🎮',SMS:'🎮',GG:'📱',PCE:'🎮',NGP:'📱',WS:'📱',WSC:'📱',
-  MAME:'🕹️',FBN:'🕹️',PS1:'💿',PSP:'📱',ARCADE:'🕹️'
+const PLATFORMS={
+  FC:  {name:'Famicom / NES',       emoji:'🎮', color:['#c0392b','#e74c3c']},
+  SFC: {name:'Super Famicom / SNES', emoji:'🎮', color:['#8e44ad','#9b59b6']},
+  GB:  {name:'Game Boy',             emoji:'🟢', color:['#27ae60','#2ecc71']},
+  GBC: {name:'Game Boy Color',       emoji:'💜', color:['#8e44ad','#a855f7']},
+  GBA: {name:'Game Boy Advance',     emoji:'🔵', color:['#2980b9','#3498db']},
+  N64: {name:'Nintendo 64',          emoji:'🕹️', color:['#d35400','#e67e22']},
+  NDS: {name:'Nintendo DS',          emoji:'📱', color:['#7f8c8d','#95a5a6']},
+  MD:  {name:'Mega Drive / Genesis', emoji:'⚡', color:['#2c3e50','#34495e']},
+  SMS: {name:'Master System',        emoji:'🔴', color:['#c0392b','#e74c3c']},
+  GG:  {name:'Game Gear',            emoji:'🖥️', color:['#2c3e50','#34495e']},
+  PCE: {name:'PC Engine',            emoji:'🟠', color:['#d35400','#e67e22']},
+  NGP: {name:'Neo Geo Pocket',       emoji:'🎯', color:['#f39c12','#f1c40f']},
+  WS:  {name:'WonderSwan',           emoji:'✨', color:['#1abc9c','#16a085']},
+  WSC: {name:'WonderSwan Color',     emoji:'🌈', color:['#e91e63','#ff5722']},
+  MAME:{name:'Arcade (MAME)',        emoji:'🕹️', color:['#ff6b9d','#c084fc']},
+  FBN: {name:'Arcade (FBNeo)',       emoji:'👾', color:['#ff6b9d','#c084fc']},
+  ARCADE:{name:'Arcade',             emoji:'🕹️', color:['#ff6b9d','#c084fc']}
 };
 
 function goHome(){
@@ -152,31 +159,38 @@ function selectPlatform(p){
   document.getElementById('search').value='';
   document.getElementById('platforms-view').classList.remove('active');
   document.getElementById('roms-view').classList.add('active');
-  document.getElementById('crumb-platform').textContent=(PLATFORM_NAMES[p.toUpperCase()]||p)+' ('+p+')';
+  const info=PLATFORMS[p.toUpperCase()]||{name:p};
+  document.getElementById('crumb-platform').textContent=info.name+' ('+p+')';
   loadRoms();
 }
 
 async function loadPlatformGrid(){
   const r=await fetch('/api/stats');
   const d=await r.json();
-  platformStats=d.platforms||[];
+  const platforms=d.platforms||[];
   const grid=document.getElementById('platform-grid');
-  const mx=Math.max(...platformStats.map(p=>p.total),1);
-  grid.innerHTML=platformStats.map(p=>{
-    const name=PLATFORM_NAMES[p.platform.toUpperCase()]||p.platform;
-    const emoji=PLATFORM_EMOJI[p.platform.toUpperCase()]||'🎮';
+  grid.innerHTML=platforms.map(p=>{
+    const info=PLATFORMS[p.platform.toUpperCase()]||{name:p.platform,emoji:'🎮',color:['#333','#555']};
     const pct=p.total?Math.round(p.matched/p.total*100):0;
+    const [c1,c2]=info.color||['#333','#555'];
     return `<div class="platform-card" onclick="selectPlatform('${p.platform}')">
-      <div class="platform-name">${emoji} ${escHtml(p.platform)}</div>
-      <div class="platform-count">${p.total}</div>
-      <div class="platform-sub">${escHtml(name)} — ${pct}% enriched</div>
-      <div class="platform-bar"><div class="platform-bar-fill" style="width:${pct}%"></div></div>
+      <div class="platform-icon">
+        <div class="platform-bg" style="background:linear-gradient(135deg,${c1},${c2})"></div>
+        <div class="platform-emoji">${info.emoji}</div>
+      </div>
+      <div class="platform-info">
+        <div class="platform-name">${escHtml(p.platform)}</div>
+        <div class="platform-full">${escHtml(info.name)}</div>
+        <div class="platform-count">${p.total} <span style="font-size:.6rem;color:var(--dim)">ROMs</span></div>
+        <div class="platform-sub">${p.matched} matched · ${pct}% enriched</div>
+        <div class="platform-bar"><div class="platform-bar-fill" style="width:${pct}%"></div></div>
+      </div>
     </div>`;
   }).join('');
 }
 
 function debounceSearch(){clearTimeout(searchTimer);searchTimer=setTimeout(()=>{page=1;loadRoms()},300)}
-function changePage(d){page+=d;loadRoms()}
+function changePage(d){page+=d;loadRoms();window.scrollTo(0,0)}
 function fmt(n){if(n>=1e9)return(n/1e9).toFixed(1)+'G';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
 
 function openPanel(rom){
@@ -223,39 +237,42 @@ function openPanel(rom){
   p.classList.add('open');
   o.classList.add('open');
   document.getElementById('main-container').classList.add('panel-open');
-
-  document.querySelectorAll('.rom-row').forEach(r=>r.classList.remove('selected'));
-  const sel=document.querySelector(`[data-idx="${currentRoms.indexOf(rom)}"]`);
-  if(sel)sel.classList.add('selected');
 }
 
 function closePanel(){
   document.getElementById('side-panel').classList.remove('open');
   document.getElementById('panel-overlay').classList.remove('open');
   document.getElementById('main-container').classList.remove('panel-open');
-  document.querySelectorAll('.rom-row').forEach(r=>r.classList.remove('selected'));
 }
 
 function formatDate(s){if(!s)return null;const m=s.match(/^(\d{4})(\d{2})(\d{2})/);if(m)return m[1]+'年'+m[2]+'月'+m[3]+'日';return s}
 function escHtml(s){if(!s)return'';return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function coverUrl(rom){
+  if(!rom.title_en)return'';
+  return'/covers/'+encodeURIComponent(rom.platform)+'/'+encodeURIComponent(rom.title_en.replace(/[\/\\:*?"<>|]/g,'_'))+'.png';
+}
 
 async function loadRoms(){
   const q=document.getElementById('search').value;
   const r=await fetch(`/api/roms?q=${encodeURIComponent(q)}&platform=${encodeURIComponent(currentPlatform)}&page=${page}&per_page=${perPage}`);
   const d=await r.json();
   currentRoms=d.roms||[];
-  const b=document.getElementById('rom-body');
-  b.innerHTML=currentRoms.map((r,i)=>{
+  const g=document.getElementById('rom-grid');
+  g.innerHTML=currentRoms.map((r,i)=>{
     const titleJA=r.title_ja||r.title||r.filename;
-    const titleEN=r.title_en||'';
-    const sub=titleEN&&titleEN!==titleJA?titleEN:r.filename;
-    const subLine=sub?`<div class="title-sub">${escHtml(sub)}</div>`:'';
-    let thumb='<div class="rom-thumb-placeholder">🎮</div>';
-    if(r.title_en){
-      const coverUrl='/covers/'+encodeURIComponent(r.platform)+'/'+encodeURIComponent(r.title_en.replace(/[\/\\:*?"<>|]/g,'_'))+'.png';
-      thumb=`<img class="rom-thumb" src="${coverUrl}" onerror="this.outerHTML='<div class=\\'rom-thumb-placeholder\\'>🎮</div>'">`;
-    }
-    return `<tr class="rom-row" data-idx="${i}" onclick="openPanel(currentRoms[${i}])"><td class="td-thumb">${thumb}</td><td class="td-title"><div class="title-main">${escHtml(titleJA)}</div>${subLine}</td><td>${fmt(r.size)}</td></tr>`;
+    const sub=r.title_en||r.filename;
+    const url=coverUrl(r);
+    const img=url
+      ?`<img class="rom-tile-img" src="${url}" onerror="this.outerHTML='<div class=\\'rom-tile-placeholder\\'>🎮</div>'" loading="lazy">`
+      :`<div class="rom-tile-placeholder">🎮</div>`;
+    return `<div class="rom-tile" onclick="openPanel(currentRoms[${i}])">
+      ${img}
+      <div class="rom-tile-info">
+        <div class="rom-tile-title">${escHtml(titleJA)}</div>
+        <div class="rom-tile-sub">${escHtml(sub)}</div>
+      </div>
+    </div>`;
   }).join('');
   const tp=Math.ceil(d.total/perPage)||1;
   document.getElementById('page-info').textContent=`${page} / ${tp} (${d.total} ROMs)`;
