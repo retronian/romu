@@ -204,7 +204,8 @@ async function loadRoms(){
   b.innerHTML=currentRoms.map((r,i)=>{
     const titleJA=r.title_ja||r.title||r.filename;
     const titleEN=r.title_en||'';
-    const subLine=titleEN&&titleEN!==titleJA?`<div class="title-sub">${escHtml(titleEN)}</div>`:'';
+    const sub=titleEN&&titleEN!==titleJA?titleEN:r.filename;
+    const subLine=sub?`<div class="title-sub">${escHtml(sub)}</div>`:'';
     let thumb='<div class="rom-thumb-placeholder">🎮</div>';
     if(r.title_en){
       const coverUrl='/covers/'+encodeURIComponent(r.platform)+'/'+encodeURIComponent(r.title_en.replace(/[\/\\:*?"<>|]/g,'_'))+'.png';
