@@ -360,18 +360,34 @@ func cmdEnrich() {
 	filenameSkipped := 0
 	if err == nil {
 		for _, ur := range unmatchedRoms {
-			// Strip extension from filename to get title
+			// Extract title from filename (may be "archive.zip/romname.ext")
 			title := ur.Filename
+			if idx := strings.LastIndex(title, "/"); idx >= 0 {
+				title = title[idx+1:]
+			}
+			// Strip ROM extension
 			for _, ext := range []string{".zip", ".7z", ".nes", ".sfc", ".smc", ".gb", ".gbc", ".gba", ".md", ".bin", ".pce", ".ws", ".wsc", ".n64", ".z64", ".v64", ".nds"} {
 				title = strings.TrimSuffix(title, ext)
 			}
+			// Also try the zip name (before /) as fallback
+			zipTitle := ur.Filename
+			if idx := strings.Index(zipTitle, "/"); idx >= 0 {
+				zipTitle = zipTitle[:idx]
+			}
+			zipTitle = strings.TrimSuffix(zipTitle, ".zip")
+			zipTitle = strings.TrimSuffix(zipTitle, ".7z")
 			entry := gamedb.Lookup(ur.Platform, title)
+			lookupTitle := title
+			if entry == nil {
+				entry = gamedb.Lookup(ur.Platform, zipTitle)
+				lookupTitle = zipTitle
+			}
 			if entry == nil {
 				filenameSkipped++
 				skippedByPlatform[ur.Platform] = append(skippedByPlatform[ur.Platform], title)
 				continue
 			}
-			err := database.CreateGameAndLink(ur.ID, title, ur.Platform, entry.TitleJA, entry.DescJA, entry.Developer, entry.Publisher, entry.ReleaseDate, entry.Genre, entry.Players)
+			err := database.CreateGameAndLink(ur.ID, lookupTitle, ur.Platform, entry.TitleJA, entry.DescJA, entry.Developer, entry.Publisher, entry.ReleaseDate, entry.Genre, entry.Players)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "  error creating game for %s: %v\n", title, err)
 				continue
