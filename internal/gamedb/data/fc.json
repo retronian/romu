@@ -4503,5 +4503,2138 @@
     "publisher": "Hi-Score Media Work",
     "release_date": "19870703T000000",
     "title_ja": "ゾンビハンター"
+  },
+  "'89 Dennou Kyuusei Uranai (Japan)": {
+    "desc_ja": "1989年の電脳九星占いゲーム。生年月日から九星気学に基づいた占い結果を表示する。",
+    "developer": "不明",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "不明",
+    "release_date": "19890101T000000",
+    "title_ja": "'89電脳九星占い"
+  },
+  "100 Man $ Kid - Maboroshi no Teiou Hen (Japan)": {
+    "desc_ja": "100万ドルキッドシリーズの幻の帝王編。パチンコ店での冒険を描いたアドベンチャーゲーム。",
+    "developer": "パル",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "パル",
+    "release_date": "19900706T000000",
+    "title_ja": "100万$キッド 幻の帝王編"
+  },
+  "Aces - Iron Eagle 3 (Japan)": {
+    "desc_ja": "戦闘機を操縦するフライトシューティング。映画「アイアン・イーグル3」をベースにした作品。",
+    "developer": "ケムコ",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ケムコ",
+    "release_date": "19920131T000000",
+    "title_ja": "エーセス アイアンイーグル3"
+  },
+  "After Burner II (Japan)": {
+    "desc_ja": "セガのアーケードゲームの移植作。F-14戦闘機で敵を撃墜する縦スクロールシューティング。",
+    "developer": "サンソフト",
+    "genre": "Shoot'em Up / Vertical",
+    "players": "1",
+    "publisher": "サンソフト",
+    "release_date": "19900914T000000",
+    "title_ja": "アフターバーナーII"
+  },
+  "Aigiina no Yogen - From The Legend of Balubalouk (Japan)": {
+    "desc_ja": "RPG作品。アイギーナの予言をテーマにしたファンタジーアドベンチャー。",
+    "developer": "ヴィック東海",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19861226T000000",
+    "title_ja": "アイギーナの予言 〜From The Legend of Balubalouk〜"
+  },
+  "Akira (Japan)": {
+    "desc_ja": "大友克洋の漫画「AKIRA」を原作とするアクションゲーム。金田正太郎が主人公。",
+    "developer": "アキュレイトシステムズ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "タイトー",
+    "release_date": "19881224T000000",
+    "title_ja": "AKIRA"
+  },
+  "Antarctic Adventure (Japan)": {
+    "desc_ja": "コナミのアーケードゲームの移植。ペンギンが南極を冒険するアクションゲーム。",
+    "developer": "コナミ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "コナミ",
+    "release_date": "19850412T000000",
+    "title_ja": "けっきょく南極大冒険"
+  },
+  "Arabian Dream Sherazaado (Japan)": {
+    "desc_ja": "アラビアンナイトをモチーフにしたアドベンチャーRPG。シェヘラザードの物語を追体験。",
+    "developer": "シード",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "シード",
+    "release_date": "19901116T000000",
+    "title_ja": "アラビアンドリーム シェラザード"
+  },
+  "Argos no Senshi (Japan) (FamicomBox)": {
+    "desc_ja": "聖闘士星矢をベースにしたアクションRPG。アルゴスの戦士として戦う。",
+    "developer": "テクモ",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "テクモ",
+    "release_date": "19861223T000000",
+    "title_ja": "アルゴスの戦士"
+  },
+  "Arkanoid 2 (Japan)": {
+    "desc_ja": "アルカノイドの続編。ブロック崩しゲームの進化版でパワーアップやボス戦が追加。",
+    "developer": "タイトー",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "タイトー",
+    "release_date": "19870520T000000",
+    "title_ja": "アルカノイドII"
+  },
+  "Attack Animal Gakuen (Japan) (Famicom 3D System)": {
+    "desc_ja": "ファミコン3Dシステム対応のアクションゲーム。動物学園での戦いを描く。",
+    "developer": "ポニーキャニオン",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19870700T000000",
+    "title_ja": "アタック・アニマル学園"
+  },
+  "B-Wings (Japan) (En)": {
+    "desc_ja": "データイーストの縦スクロールシューティング。戦闘機で敵基地を攻略する。",
+    "developer": "データイースト",
+    "genre": "Shoot'em Up / Vertical",
+    "players": "2",
+    "publisher": "データイースト",
+    "release_date": "19860125T000000",
+    "title_ja": "B-WINGS"
+  },
+  "Ballblazer (Japan) (En)": {
+    "desc_ja": "ルーカスフィルムゲームズ開発の未来的スポーツゲーム。球技とレーシングを組み合わせ。",
+    "developer": "ルーカスフィルムゲームズ",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19851205T000000",
+    "title_ja": "ボールブレイザー"
+  },
+  "Balloon Fight (Japan) (En) (GameCube Edition)": {
+    "desc_ja": "任天堂のアクションゲーム。風船で浮遊して敵を倒すユニークなアクション。",
+    "developer": "任天堂",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19850112T000000",
+    "title_ja": "バルーンファイト"
+  },
+  "Banana (Japan)": {
+    "desc_ja": "シンプルなアクションパズルゲーム。バナナをテーマにした軽快な内容。",
+    "developer": "ヴィック東海",
+    "genre": "Puzzle",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19860725T000000",
+    "title_ja": "バナナ"
+  },
+  "Batsu & Terii (Japan)": {
+    "desc_ja": "コメディタッチのアドベンチャーゲーム。バツとテリーの珍道中を描く。",
+    "developer": "エポック",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "エポック",
+    "release_date": "19870627T000000",
+    "title_ja": "バツ&テリー"
+  },
+  "Bikkuri Nekketsu Shin Kiroku! - Harukanaru Kin Medal (Japan)": {
+    "desc_ja": "くにおくんシリーズのスポーツゲーム。陸上競技でオリンピック金メダルを目指す。",
+    "developer": "テクノスジャパン",
+    "genre": "Sports",
+    "players": "4",
+    "publisher": "テクノスジャパン",
+    "release_date": "19920724T000000",
+    "title_ja": "びっくり熱血新記録! はるかなる金メダル"
+  },
+  "Booby Kids (Japan) (En)": {
+    "desc_ja": "コナミのアクションゲーム。双子の兄弟が冒険するプラットフォームアクション。",
+    "developer": "コナミ",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "コナミ",
+    "release_date": "19870119T000000",
+    "title_ja": "ブービーキッズ"
+  },
+  "Buggy Popper (Japan) (En)": {
+    "desc_ja": "バギーカーを操縦するアクションゲーム。昆虫のような敵を倒しながら進む。",
+    "developer": "キング・レコード",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "キング・レコード",
+    "release_date": "19890426T000000",
+    "title_ja": "バギー・ポッパー"
+  },
+  "Cat Ninden Teyandee (Japan)": {
+    "desc_ja": "タツノコプロのアニメを原作とするアクションゲーム。猫の忍者が活躍する。",
+    "developer": "テクモ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "テクモ",
+    "release_date": "19910222T000000",
+    "title_ja": "キャッ党忍伝てやんでえ"
+  },
+  "Chester Field - Ankoku Shin heno Chousen (Japan)": {
+    "desc_ja": "RPGアドベンチャーゲーム。暗黒神への挑戦をテーマにしたファンタジー作品。",
+    "developer": "ヴィック東海",
+    "genre": "Adventure, Role Playing Game",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19870930T000000",
+    "title_ja": "チェスター・フィールド 暗黒神への挑戦"
+  },
+  "Chitei Senkuu Vazorudaa (Japan)": {
+    "desc_ja": "地底での戦いを描くシューティングゲーム。バゾルダーで地下要塞を攻略。",
+    "developer": "ユタカ",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ユタカ",
+    "release_date": "19871210T000000",
+    "title_ja": "地底戦空バゾルダー"
+  },
+  "Chou Hen (Japan) (Joy Van)": {
+    "desc_ja": "変身をテーマにしたアクションアドベンチャー。キャラクターが様々な形態に変化。",
+    "developer": "ジョイ・ヴァン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ジョイ・ヴァン",
+    "release_date": "19900201T000000",
+    "title_ja": "超変"
+  },
+  "Choujin Ookami Senki - Warwolf (Japan)": {
+    "desc_ja": "超人オオカミ戦記。狼男の戦いを描いたアクションRPG。",
+    "developer": "テクニカルソフト",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "テクニカルソフト",
+    "release_date": "19900330T000000",
+    "title_ja": "超人オオカミ戦記 ワーウルフ"
+  },
+  "Chuugoku Janshi Story - Tonpuu (Japan)": {
+    "desc_ja": "中国雀士ストーリー。麻雀を通じて物語が進行するアドベンチャー麻雀ゲーム。",
+    "developer": "クエスト",
+    "genre": "Board game",
+    "players": "1",
+    "publisher": "クエスト",
+    "release_date": "19901221T000000",
+    "title_ja": "中国雀士ストーリー 東風"
+  },
+  "City Adventure Touch - Mystery of Triangle (Japan)": {
+    "desc_ja": "都市を舞台にした推理アドベンチャー。三角形の謎を解く探偵もの。",
+    "developer": "トーワチキ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "トーワチキ",
+    "release_date": "19870411T000000",
+    "title_ja": "シティアドベンチャー・タッチ ミステリー・オブ・トライアングル"
+  },
+  "Clu Clu Land (Japan)": {
+    "desc_ja": "任天堂のパズルアクション。クルクルが金塊を回収するユニークな操作感のゲーム。",
+    "developer": "任天堂",
+    "genre": "Puzzle",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19841009T000000",
+    "title_ja": "クルクルランド"
+  },
+  "Columbus - Ougon no Yoake (Japan)": {
+    "desc_ja": "コロンブスの冒険をテーマにした歴史シミュレーションゲーム。黄金の夜明けを求めて。",
+    "developer": "光栄",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "光栄",
+    "release_date": "19921127T000000",
+    "title_ja": "コロンブス 黄金の夜明け"
+  },
+  "Cosmic Wars (Japan)": {
+    "desc_ja": "宇宙を舞台にしたシューティングゲーム。コズミック・ウォーズで銀河の平和を守る。",
+    "developer": "コナミ",
+    "genre": "Shoot'em Up",
+    "players": "2",
+    "publisher": "コナミ",
+    "release_date": "19890824T000000",
+    "title_ja": "コズミック・ウォーズ"
+  },
+  "Crayon Shin-chan - Ora to Poi Poi (Japan)": {
+    "desc_ja": "クレヨンしんちゃんのアクションゲーム。しんちゃんとポイポイの楽しい冒険。",
+    "developer": "バンダイ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19930723T000000",
+    "title_ja": "クレヨンしんちゃん オラとポイポイ"
+  },
+  "Datach - Battle Rush - Build Up Robot Tournament (Japan)": {
+    "desc_ja": "データック対応のロボット格闘ゲーム。バーコードでロボットを強化して戦う。",
+    "developer": "バンダイ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19920731T000000",
+    "title_ja": "データック バトルラッシュ ビルドアップロボットトーナメント"
+  },
+  "Datach - Dragon Ball Z - Gekitou Tenkaichi Budou Kai (Japan)": {
+    "desc_ja": "データック対応のドラゴンボールZ格闘ゲーム。天下一武道会での激闘を再現。",
+    "developer": "バンダイ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19920731T000000",
+    "title_ja": "データック ドラゴンボールZ 激闘天下一武道会"
+  },
+  "Datach - J League Super Top Players (Japan)": {
+    "desc_ja": "データック対応のサッカーゲーム。Jリーグのスーパートッププレイヤーでプレイ。",
+    "developer": "バンダイ",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19930730T000000",
+    "title_ja": "データック Jリーグスーパートッププレイヤーズ"
+  },
+  "Datach - SD Gundam - Gundam Wars (Japan)": {
+    "desc_ja": "データック対応のSDガンダム戦略ゲーム。ガンダム大戦でモビルスーツを指揮。",
+    "developer": "バンダイ",
+    "genre": "Strategy",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19920731T000000",
+    "title_ja": "データック SDガンダム ガンダム大戦"
+  },
+  "Datach - Ultraman Club - Supokon Fight! (Japan)": {
+    "desc_ja": "データック対応のウルトラマン格闘ゲーム。スポ根ファイトでヒーローと戦う。",
+    "developer": "バンダイ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19920731T000000",
+    "title_ja": "データック ウルトラマンクラブ スポ根ファイト!"
+  },
+  "Datach - Yuu Yuu Hakusho - Bakutou Ankoku Bujutsu Kai (Japan)": {
+    "desc_ja": "データック対応の幽遊白書格闘ゲーム。暗黒武術会での爆闘を再現。",
+    "developer": "バンダイ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19930730T000000",
+    "title_ja": "データック 幽☆遊☆白書 爆闘暗黒武術会"
+  },
+  "Deep Dungeon 3 - Yuushi heno Tabi (Japan)": {
+    "desc_ja": "ディープダンジョン第3弾。勇者への旅をテーマにしたダンジョンRPG。",
+    "developer": "ヒューマン",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ヒューマン",
+    "release_date": "19880729T000000",
+    "title_ja": "ディープダンジョンIII 勇士への旅"
+  },
+  "Deep Dungeon 4 - Kuro no Youjutsushi (Japan)": {
+    "desc_ja": "ディープダンジョン第4弾。黒の妖術師との最終決戦を描くRPG。",
+    "developer": "ヒューマン",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ヒューマン",
+    "release_date": "19900817T000000",
+    "title_ja": "ディープダンジョンIV 黒の妖術師"
+  },
+  "Devil World (Japan)": {
+    "desc_ja": "任天堂のアクションパズル。十字架を持つキャラクターが悪魔の世界で戦う。",
+    "developer": "任天堂",
+    "genre": "Puzzle",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19841005T000000",
+    "title_ja": "デビルワールド"
+  },
+  "Dig Dug (Japan)": {
+    "desc_ja": "ナムコの名作アクションゲーム。地中を掘って敵を倒すユニークなシステム。",
+    "developer": "ナムコ",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19850605T000000",
+    "title_ja": "ディグダグ"
+  },
+  "Digital Devil Monogatari - Megami Tensei (Japan)": {
+    "desc_ja": "女神転生の原点。悪魔を仲間にして戦うダークファンタジーRPG。",
+    "developer": "ナムコ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ナムコ",
+    "release_date": "19870911T000000",
+    "title_ja": "デジタル・デビル物語 女神転生"
+  },
+  "Digital Devil Monogatari - Megami Tensei II (Japan)": {
+    "desc_ja": "女神転生の続編。より深化した悪魔合体システムとダークな世界観。",
+    "developer": "ナムコ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ナムコ",
+    "release_date": "19900406T000000",
+    "title_ja": "デジタル・デビル物語 女神転生II"
+  },
+  "Donald Land (Japan) (En)": {
+    "desc_ja": "ドナルドダックが主人公のアクションゲーム。カラフルな世界で楽しい冒険。",
+    "developer": "データイースト",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "データイースト",
+    "release_date": "19881229T000000",
+    "title_ja": "ドナルドランド"
+  },
+  "Donkey Kong (Japan) (En)": {
+    "desc_ja": "任天堂の名作アクション。マリオがドンキーコングから恋人を救出するゲーム。",
+    "developer": "任天堂",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19830715T000000",
+    "title_ja": "ドンキーコング"
+  },
+  "Donkey Kong 3 (Japan)": {
+    "desc_ja": "ドンキーコングシリーズ第3弾。スタンリーが殺虫剤でドンキーコングと戦う。",
+    "developer": "任天堂",
+    "genre": "Shoot'em Up",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19840704T000000",
+    "title_ja": "ドンキーコング3"
+  },
+  "Donkey Kong Jr. (Japan) (En)": {
+    "desc_ja": "ドンキーコングJr.が父親を救出するアクション。つるを登る独特の操作感。",
+    "developer": "任天堂",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19830715T000000",
+    "title_ja": "ドンキーコングJR."
+  },
+  "Door Door (Japan) (En)": {
+    "desc_ja": "チュンソフトのパズルアクション。ドアを開閉して敵を回避するユニークなゲーム。",
+    "developer": "チュンソフト",
+    "genre": "Puzzle",
+    "players": "1",
+    "publisher": "エニックス",
+    "release_date": "19850215T000000",
+    "title_ja": "ドアドア"
+  },
+  "Dragon Ball 3 - Gokuu Den (Japan)": {
+    "desc_ja": "ドラゴンボール3作目のRPG。悟空の成長と冒険を描いた物語。",
+    "developer": "バンダイ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19891027T000000",
+    "title_ja": "ドラゴンボール3 悟空伝"
+  },
+  "Dragon Ball Z II - Gekishin Freeza!! (Japan)": {
+    "desc_ja": "ドラゴンボールZの格闘ゲーム第2弾。フリーザとの激闘を描く。",
+    "developer": "バンダイ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19911220T000000",
+    "title_ja": "ドラゴンボールZ II 激神フリーザ!!"
+  },
+  "Dragon Quest II (Japan)": {
+    "desc_ja": "ドラゴンクエスト第2弾。ローレシアの王子たちがハーゴンを倒す冒険RPG。",
+    "developer": "チュンソフト",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "エニックス",
+    "release_date": "19870126T000000",
+    "title_ja": "ドラゴンクエストII 悪霊の神々"
+  },
+  "Dragon Quest III (Japan)": {
+    "desc_ja": "ドラゴンクエスト第3弾。転職システムが導入された名作RPG。",
+    "developer": "チュンソフト",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "エニックス",
+    "release_date": "19880210T000000",
+    "title_ja": "ドラゴンクエストIII そして伝説へ..."
+  },
+  "Dragon Slayer 4 - Drasle Family (Japan)": {
+    "desc_ja": "ドラゴンスレイヤー第4弾。家族でダンジョンを攻略するアクションRPG。",
+    "developer": "エポック",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "エポック",
+    "release_date": "19871109T000000",
+    "title_ja": "ドラゴンスレイヤー4 ドラスレファミリー"
+  },
+  "Eggland - Meikyuu no Fukkatsu (Japan)": {
+    "desc_ja": "エッグランドシリーズの迷宮復活編。卵のキャラクターが活躍するアクションパズル。",
+    "developer": "システムサコム",
+    "genre": "Puzzle",
+    "players": "1",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19871218T000000",
+    "title_ja": "エッグランド 迷宮の復活"
+  },
+  "Erunaaku no Zaihou (Japan)": {
+    "desc_ja": "エルナークの財宝。ダンジョンRPGの名作で財宝を求めて地下迷宮を探索。",
+    "developer": "ハドソン",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19870811T000000",
+    "title_ja": "エルナークの財宝"
+  },
+  "Famicom Doubutsu Seitai Zukan! - Katte ni Shirokuma - Mori wo Sukue no Maki! (Japan)": {
+    "desc_ja": "ファミコン動物生態図鑑。しろくまが主人公の環境保護をテーマにした教育ゲーム。",
+    "developer": "任天堂",
+    "genre": "Educational",
+    "players": "1",
+    "publisher": "任天堂",
+    "release_date": "19890209T000000",
+    "title_ja": "ファミコン動物生態図鑑! かってにシロクマ 森を救えの巻!"
+  },
+  "Famicom Jump - Eiyuu Retsuden (Japan)": {
+    "desc_ja": "少年ジャンプの人気キャラが総出演するアクションRPG。英雄列伝として名作キャラが活躍。",
+    "developer": "バンダイ",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19890215T000000",
+    "title_ja": "ファミコンジャンプ 英雄列伝"
+  },
+  "Famicom Meijin Sen (Japan)": {
+    "desc_ja": "ファミコン名人戦。高橋名人監修のアクション&シューティングミニゲーム集。",
+    "developer": "ハドソン",
+    "genre": "Action",
+    "players": "4",
+    "publisher": "ハドソン",
+    "release_date": "19881223T000000",
+    "title_ja": "ファミコン名人戦"
+  },
+  "Famicom Wars (Japan)": {
+    "desc_ja": "任天堂の戦略シミュレーション。ウォーズシリーズの原点となったターン制戦術ゲーム。",
+    "developer": "任天堂",
+    "genre": "Strategy",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19880812T000000",
+    "title_ja": "ファミコンウォーズ"
+  },
+  "Family Computer - Othello (Japan)": {
+    "desc_ja": "ファミリーコンピュータのオセロゲーム。コンピュータ対戦や2人対戦が可能。",
+    "developer": "河田",
+    "genre": "Board game",
+    "players": "2",
+    "publisher": "河田",
+    "release_date": "19860130T000000",
+    "title_ja": "ファミリーコンピュータ オセロ"
+  },
+  "Family Quiz (Japan)": {
+    "desc_ja": "家族で楽しめるクイズゲーム。様々なジャンルの問題が収録されている。",
+    "developer": "アテナ",
+    "genre": "Simulation",
+    "players": "4",
+    "publisher": "アテナ",
+    "release_date": "19860925T000000",
+    "title_ja": "ファミリークイズ"
+  },
+  "Family Trainer 1 - Athletic World (Japan)": {
+    "desc_ja": "ファミリートレーナー第1弾。パワーパッド対応の陸上競技ゲーム。",
+    "developer": "ヒューマン",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19860827T000000",
+    "title_ja": "ファミリートレーナー 1 アスレチックワールド"
+  },
+  "Family Trainer 10 - Rairai Kyonsees (Japan)": {
+    "desc_ja": "ファミリートレーナー第10弾。パワーパッド対応のキョンシー退治アクション。",
+    "developer": "ヒューマン",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19881014T000000",
+    "title_ja": "ファミリートレーナー 10 来来! キョンシーズ"
+  },
+  "Family Trainer 2 - Running Stadium (Japan)": {
+    "desc_ja": "ファミリートレーナー第2弾。パワーパッドで走るランニングスタジアム。",
+    "developer": "ヒューマン",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19860900T000000",
+    "title_ja": "ファミリートレーナー 2 ランニングスタジアム"
+  },
+  "Family Trainer 3 - Aerobics Studio (Japan)": {
+    "desc_ja": "ファミリートレーナー第3弾。パワーパッド対応のエアロビクスフィットネス。",
+    "developer": "ヒューマン",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19861200T000000",
+    "title_ja": "ファミリートレーナー 3 エアロビクススタジオ"
+  },
+  "Family Trainer 4 - Jogging Race (Japan)": {
+    "desc_ja": "ファミリートレーナー第4弾。パワーパッドでジョギングレースを楽しむスポーツゲーム。",
+    "developer": "ヒューマン",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19870220T000000",
+    "title_ja": "ファミリートレーナー 4 ジョギングレース"
+  },
+  "Family Trainer 5 - Meiro Daisakusen (Japan)": {
+    "desc_ja": "ファミリートレーナー第5弾。パワーパッドで迷路を攻略する大作戦。",
+    "developer": "ヒューマン",
+    "genre": "Adventure",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19870424T000000",
+    "title_ja": "ファミリートレーナー 5 迷路大作戦"
+  },
+  "Family Trainer 6 - Manhattan Police (Japan)": {
+    "desc_ja": "ファミリートレーナー第6弾。パワーパッドでマンハッタンの警察官になって活動。",
+    "developer": "ヒューマン",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19870626T000000",
+    "title_ja": "ファミリートレーナー 6 マンハッタンポリス"
+  },
+  "Family Trainer 7 - Daiundoukai (Japan)": {
+    "desc_ja": "ファミリートレーナー第7弾。パワーパッドで大運動会の各種競技に挑戦。",
+    "developer": "ヒューマン",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19870925T000000",
+    "title_ja": "ファミリートレーナー 7 大運動会"
+  },
+  "Family Trainer 8 - Totsugeki! Fuuun Takeshi-jou (Japan)": {
+    "desc_ja": "ファミリートレーナー第8弾。パワーパッドで風雲たけし城に突撃挑戦。",
+    "developer": "ヒューマン",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19871218T000000",
+    "title_ja": "ファミリートレーナー 8 突撃! 風雲たけし城"
+  },
+  "Family Trainer 9 - Fuuun Takeshi-jou 2 (Japan)": {
+    "desc_ja": "ファミリートレーナー第9弾。パワーパッド対応の風雲たけし城第2弾。",
+    "developer": "ヒューマン",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19880729T000000",
+    "title_ja": "ファミリートレーナー 9 風雲たけし城2"
+  },
+  "Famista '89 - Kaimaku Han!! (Japan)": {
+    "desc_ja": "ファミスタ89年開幕版。ナムコの野球ゲームシリーズの人気作品。",
+    "developer": "ナムコ",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19890421T000000",
+    "title_ja": "ファミスタ'89 開幕版!!"
+  },
+  "Final Fantasy (Japan)": {
+    "desc_ja": "スクウェアの名作RPG第1弾。4人の光の戦士が世界を救う冒険の始まり。",
+    "developer": "スクウェア",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "スクウェア",
+    "release_date": "19871218T000000",
+    "title_ja": "ファイナルファンタジー"
+  },
+  "Final Fantasy I, II (Japan)": {
+    "desc_ja": "ファイナルファンタジーI・IIのカップリング版。2作品が1本のカセットに収録。",
+    "developer": "スクウェア",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "スクウェア",
+    "release_date": "19940201T000000",
+    "title_ja": "ファイナルファンタジーI・II"
+  },
+  "Fire Emblem (Japan)": {
+    "desc_ja": "任天堂のシミュレーションRPG第1弾。マルスの物語で戦略性の高い戦闘が魅力。",
+    "developer": "インテリジェントシステムズ",
+    "genre": "Strategy, Role Playing Game",
+    "players": "1",
+    "publisher": "任天堂",
+    "release_date": "19900420T000000",
+    "title_ja": "ファイアーエムブレム 暗黒竜と光の剣"
+  },
+  "Flipull - An Exciting Cube Game (Japan) (En) (Rev 1)": {
+    "desc_ja": "フリップル。キューブを操作するパズルゲーム。タイトーのエキサイティングなパズルアクション。",
+    "developer": "タイトー",
+    "genre": "Puzzle",
+    "players": "2",
+    "publisher": "タイトー",
+    "release_date": "19890914T000000",
+    "title_ja": "フリップル"
+  },
+  "Formation Z (Japan) (En)": {
+    "desc_ja": "フォーメーションZ。変形ロボットを操縦するアクションシューティング。",
+    "developer": "ジャレコ",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19850930T000000",
+    "title_ja": "フォーメーションZ"
+  },
+  "Galaxian (Japan)": {
+    "desc_ja": "ナムコの名作固定画面シューティング。ギャラクシアンの攻撃パターンを読んで撃退。",
+    "developer": "ナムコ",
+    "genre": "Shoot'em Up",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19841114T000000",
+    "title_ja": "ギャラクシアン"
+  },
+  "Garfield - A Week of Garfield (Japan)": {
+    "desc_ja": "ガーフィールドのアクションゲーム。人気猫キャラクターの1週間の冒険。",
+    "developer": "マーズ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19890616T000000",
+    "title_ja": "ガーフィールドの一週間"
+  },
+  "Gegege no Kitarou - Youkai Daimakyou (Japan)": {
+    "desc_ja": "ゲゲゲの鬼太郎の妖怪大魔境。水木しげる原作の妖怪アクションゲーム。",
+    "developer": "バンダイ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19860822T000000",
+    "title_ja": "ゲゲゲの鬼太郎 妖怪大魔境"
+  },
+  "Gimmick! (Japan) (En)": {
+    "desc_ja": "サンソフトの隠れた名作アクション。ギミックを駆使した独特の世界観と物理エンジン。",
+    "developer": "サンソフト",
+    "genre": "Platform",
+    "players": "1",
+    "publisher": "サンソフト",
+    "release_date": "19920131T000000",
+    "title_ja": "ギミック!"
+  },
+  "Godzilla (Japan)": {
+    "desc_ja": "ゴジラのアクションゲーム。怪獣王として街を破壊し、敵怪獣と戦う。",
+    "developer": "コンパイル",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19881209T000000",
+    "title_ja": "ゴジラ"
+  },
+  "Golgo 13 - Dai 1 Shou - Kamigami no Tasogare (Japan)": {
+    "desc_ja": "ゴルゴ13第1章。さいとうたかお原作のスナイパーアクション「神々の黄昏」。",
+    "developer": "ヴィック東海",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19880526T000000",
+    "title_ja": "ゴルゴ13 第一章 神々の黄昏"
+  },
+  "Golgo 13 - The Riddle of Icarus (Japan)": {
+    "desc_ja": "ゴルゴ13イカロスの謎。デューク東郷が活躍するスナイパーアクション第2弾。",
+    "developer": "ヴィック東海",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19901221T000000",
+    "title_ja": "ゴルゴ13 イカロスの謎"
+  },
+  "Gomoku Narabe (Japan)": {
+    "desc_ja": "五目並べゲーム。縦横斜めに5つ並べる古典的なボードゲーム。",
+    "developer": "任天堂",
+    "genre": "Board game",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19831201T000000",
+    "title_ja": "五目ならべ"
+  },
+  "Gryzor (Japan)": {
+    "desc_ja": "コナミのアクションシューティング。魂斗羅の海外版名称で知られる名作。",
+    "developer": "コナミ",
+    "genre": "Shoot'em Up",
+    "players": "2",
+    "publisher": "コナミ",
+    "release_date": "19870209T000000",
+    "title_ja": "魂斗羅"
+  },
+  "Gun Hed (Japan)": {
+    "desc_ja": "映画ガンヘッドを原作とするアクションシューティング。未来の戦闘ロボットで戦う。",
+    "developer": "ハドソン",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19900727T000000",
+    "title_ja": "ガンヘッド"
+  },
+  "Hanafuda Yuukyou Den - Nagarebana Oryuu (Japan)": {
+    "desc_ja": "花札遊侠伝。任侠をテーマにした花札ゲームで流れ花のお竜が主人公。",
+    "developer": "ハドソン",
+    "genre": "Board game",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19900323T000000",
+    "title_ja": "花札遊侠伝 流れ花お竜"
+  },
+  "Hanjuku Eiyuu (Japan)": {
+    "desc_ja": "半熟英雄。コミカルな戦略シミュレーションで半熟な英雄たちが活躍。",
+    "developer": "スクウェア",
+    "genre": "Strategy",
+    "players": "1",
+    "publisher": "スクウェア",
+    "release_date": "19881203T000000",
+    "title_ja": "半熟英雄"
+  },
+  "Hector '87 (Japan) (En)": {
+    "desc_ja": "ヘクター87。未来的なシューティングゲームで宇宙戦闘機を操縦。",
+    "developer": "ハドソン",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19870314T000000",
+    "title_ja": "ヘクター'87"
+  },
+  "Herakles no Eikou - Toujin Makyou Den (Japan)": {
+    "desc_ja": "ヘラクレスの栄光。データイーストのギリシャ神話RPG第1弾。",
+    "developer": "データイースト",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "データイースト",
+    "release_date": "19870814T000000",
+    "title_ja": "ヘラクレスの栄光 闘人魔境伝"
+  },
+  "Herakles no Eikou 2 - Titan no Metsubou (Japan)": {
+    "desc_ja": "ヘラクレスの栄光2。タイタンの滅亡をテーマにしたギリシャ神話RPG続編。",
+    "developer": "データイースト",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "データイースト",
+    "release_date": "19890420T000000",
+    "title_ja": "ヘラクレスの栄光II タイタンの滅亡"
+  },
+  "Higemaru - Makai-jima - Nanatsu no Shima Daibouken (Japan)": {
+    "desc_ja": "ひげ丸の魔界島。7つの島での大冒険を描くアクションアドベンチャー。",
+    "developer": "カプコン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "カプコン",
+    "release_date": "19860125T000000",
+    "title_ja": "ひげ丸 魔界島 七つの島大冒険"
+  },
+  "Highway Star (Japan) (Famicom 3D System)": {
+    "desc_ja": "ハイウェイスター。ファミコン3Dシステム対応のドライビングゲーム。",
+    "developer": "スクウェア",
+    "genre": "Racing, Driving",
+    "players": "1",
+    "publisher": "スクウェア",
+    "release_date": "19870721T000000",
+    "title_ja": "ハイウェイスター"
+  },
+  "Hikari no Senshi Foton - The Ultimate Game on Planet Earth (Japan)": {
+    "desc_ja": "光の戦士フォトン。地球最後のゲームをうたう壮大なRPGアドベンチャー。",
+    "developer": "ホットビィ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ホットビィ",
+    "release_date": "19881222T000000",
+    "title_ja": "光の戦士フォトン"
+  },
+  "Hiryuu no Ken - Ougi no Shou (Japan)": {
+    "desc_ja": "飛龍の拳奥義の章。格闘アクションゲームで必殺技を駆使して戦う。",
+    "developer": "カルチャーブレーン",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "カルチャーブレーン",
+    "release_date": "19851128T000000",
+    "title_ja": "飛龍の拳 奥義の章"
+  },
+  "Hiryuu no Ken III - 5 Nin no Ryuu Senshi (Japan)": {
+    "desc_ja": "飛龍の拳III。5人の龍戦士が活躍する格闘アクション第3弾。",
+    "developer": "カルチャーブレーン",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "カルチャーブレーン",
+    "release_date": "19911129T000000",
+    "title_ja": "飛龍の拳III 5人の龍戦士"
+  },
+  "Hokkaidou Rensa Satsujin - Ohotsuku ni Kiyu (Japan)": {
+    "desc_ja": "北海道連鎖殺人。オホーツクに消ゆの続編となる推理アドベンチャー。",
+    "developer": "エニックス",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "エニックス",
+    "release_date": "19870227T000000",
+    "title_ja": "北海道連鎖殺人 オホーツクに消ゆ"
+  },
+  "Hokuto no Ken (Japan)": {
+    "desc_ja": "北斗の拳の横スクロールアクション。ケンシロウの秘孔技で敵をなぎ倒す。",
+    "developer": "東映動画",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19860811T000000",
+    "title_ja": "北斗の拳"
+  },
+  "Hokuto no Ken 2 - Seikimatsu Kyuuseishu Densetsu (Japan)": {
+    "desc_ja": "北斗の拳2世紀末救世主伝説。ケンシロウの新たな戦いを描くアクションRPG。",
+    "developer": "東映動画",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19870417T000000",
+    "title_ja": "北斗の拳2 世紀末救世主伝説"
+  },
+  "Hokuto no Ken 3 - Shin Seiki Souzou Seiken Restuden (Japan)": {
+    "desc_ja": "北斗の拳3新世紀創造。凄拳列伝でケンシロウたちの新たな物語。",
+    "developer": "東映動画",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19890728T000000",
+    "title_ja": "北斗の拳3 新世紀創造 凄拳列伝"
+  },
+  "Hokuto no Ken 4 - Shichisei Haken Den - Hokuto Shinken no Kanata he (Japan)": {
+    "desc_ja": "北斗の拳4七星覇拳伝。北斗神拳の彼方へ向かう最終章。",
+    "developer": "東映動画",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19911213T000000",
+    "title_ja": "北斗の拳4 七星覇拳伝 北斗神拳の彼方へ"
+  },
+  "Honoo no Doukyuuji - Dodge Danpei (Japan)": {
+    "desc_ja": "炎のドッジ弾平。ドッジボールを題材にしたスポーツアクションゲーム。",
+    "developer": "ヴァープ",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "ヴァープ",
+    "release_date": "19910329T000000",
+    "title_ja": "炎のドッジ弾平"
+  },
+  "Honoo no Doukyuuji - Dodge Danpei 2 (Japan)": {
+    "desc_ja": "炎のドッジ弾平2。ドッジボールアニメを原作とするスポーツゲーム続編。",
+    "developer": "ヴァープ",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "ヴァープ",
+    "release_date": "19920807T000000",
+    "title_ja": "炎のドッジ弾平2"
+  },
+  "Hoshi o Miru Hito (Japan)": {
+    "desc_ja": "星をみるひと。超能力をテーマにしたSFファンタジーRPG。",
+    "developer": "ホットビィ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ホットビィ",
+    "release_date": "19870827T000000",
+    "title_ja": "星をみるひと"
+  },
+  "Hottaaman no Chitei Tanken (Japan)": {
+    "desc_ja": "ホッターマンの地底探険。地下世界を探検するアクションアドベンチャー。",
+    "developer": "イマジニア",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "イマジニア",
+    "release_date": "19890930T000000",
+    "title_ja": "ホッターマンの地底探険"
+  },
+  "Hyakkiyakou (Japan)": {
+    "desc_ja": "百鬼夜行。和風ホラーアドベンチャーで妖怪たちの世界を冒険。",
+    "developer": "東映動画",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19891229T000000",
+    "title_ja": "百鬼夜行"
+  },
+  "Hyokkori Hyoutan Shima - Nazo no Kaizokusen (Japan)": {
+    "desc_ja": "ひょっこりひょうたん島。NHK人形劇を原作とする冒険アドベンチャー。",
+    "developer": "ハドソン",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19890706T000000",
+    "title_ja": "ひょっこりひょうたん島 謎の海賊船"
+  },
+  "Ikari (Japan) (En)": {
+    "desc_ja": "怒。戦場でのサバイバルアクション。戦車や重火器を駆使して戦う。",
+    "developer": "SNK",
+    "genre": "Shoot'em Up",
+    "players": "2",
+    "publisher": "SNK",
+    "release_date": "19860430T000000",
+    "title_ja": "怒"
+  },
+  "Itadaki Street - Watashi no Mise ni Yottette (Japan)": {
+    "desc_ja": "いただきストリート。ドラクエキャラが出演するボードゲーム。",
+    "developer": "エニックス",
+    "genre": "Board game",
+    "players": "4",
+    "publisher": "エニックス",
+    "release_date": "19910221T000000",
+    "title_ja": "いただきストリート 私のお店によってって"
+  },
+  "JJ - Tobidase Daisakusen Part 2 (Japan)": {
+    "desc_ja": "JJ飛び出せ大作戦Part2。アクションアドベンチャーでJJが活躍する続編。",
+    "developer": "スクウェア",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "スクウェア",
+    "release_date": "19870410T000000",
+    "title_ja": "JJ とびだせ大作戦 Part II"
+  },
+  "Jajamaru no Daibouken (Japan)": {
+    "desc_ja": "じゃじゃ丸の大冒険。忍者じゃじゃ丸が活躍するアクションアドベンチャー。",
+    "developer": "ジャレコ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19860815T000000",
+    "title_ja": "じゃじゃ丸の大冒険"
+  },
+  "Juvei Quest (Japan)": {
+    "desc_ja": "ジューベイクエスト。剣士の冒険を描くアクションRPG。",
+    "developer": "タイトー",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "タイトー",
+    "release_date": "19871201T000000",
+    "title_ja": "ジューベイクエスト"
+  },
+  "Kakefu-kun no Jump Tengoku - Speed Jigoku (Japan)": {
+    "desc_ja": "かけふくんのジャンプ天国。スピード地獄をテーマにしたアクションゲーム。",
+    "developer": "ユタカ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "ユタカ",
+    "release_date": "19900727T000000",
+    "title_ja": "かけふくんのジャンプ天国 スピード地獄"
+  },
+  "Kamen Rider SD - Guranshokkaa no Yabou (Japan)": {
+    "desc_ja": "仮面ライダーSD。グランショッカーの野望を阻止するアクションゲーム。",
+    "developer": "エンジェル",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19930730T000000",
+    "title_ja": "仮面ライダーSD グランショッカーの野望"
+  },
+  "Karakuri Kengou Den - Musashi Road - Karakuri Nin Hashiru! (Japan)": {
+    "desc_ja": "からくり剣豪伝武蔵ロード。からくり忍が駆けるアクションアドベンチャー。",
+    "developer": "クエスト",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "クエスト",
+    "release_date": "19900907T000000",
+    "title_ja": "からくり剣豪伝 武蔵ロード からくり忍走る!"
+  },
+  "Karaoke Studio Senyou Cassette Vol 1 (Japan)": {
+    "desc_ja": "カラオケスタジオ専用カセット第1弾。家庭でカラオケを楽しむための楽曲集。",
+    "developer": "バンダイ",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19870731T000000",
+    "title_ja": "カラオケスタジオ専用カセット Vol.1"
+  },
+  "Karaoke Studio Senyou Cassette Vol 2 (Japan)": {
+    "desc_ja": "カラオケスタジオ専用カセット第2弾。続編となるカラオケ楽曲コレクション。",
+    "developer": "バンダイ",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19871201T000000",
+    "title_ja": "カラオケスタジオ専用カセット Vol.2"
+  },
+  "Kero Kero Keroppi no Daibouken 2 - Donuts Ike ha Oosawagi! (Japan)": {
+    "desc_ja": "けろけろけろっぴの大冒険2。ドーナツ池は大騒ぎのアクションアドベンチャー。",
+    "developer": "キャラクターソフト",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "キャラクターソフト",
+    "release_date": "19920925T000000",
+    "title_ja": "けろけろけろっぴの大冒険2 ドーナツ池は大騒ぎ!"
+  },
+  "Kinnikuman - Muscle Tag Match (Japan)": {
+    "desc_ja": "キン肉マンのマッスルタッグマッチ。超人たちのタッグ戦プロレスゲーム。",
+    "developer": "バンダイ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "バンダイ",
+    "release_date": "19851208T000000",
+    "title_ja": "キン肉マン マッスルタッグマッチ"
+  },
+  "Kujaku Ou 2 (Japan)": {
+    "desc_ja": "孔雀王2。荻野真原作の密教バトル漫画を原作とするアクションRPG。",
+    "developer": "ポニーキャニオン",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19890818T000000",
+    "title_ja": "孔雀王2"
+  },
+  "Kyouryuu Sentai Juuranger (Japan)": {
+    "desc_ja": "恐竜戦隊ジュウレンジャー。スーパー戦隊シリーズのアクションゲーム。",
+    "developer": "エンジェル",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19920717T000000",
+    "title_ja": "恐竜戦隊ジュウレンジャー"
+  },
+  "Kyuukyoku Harikiri Stadium '88 (Japan)": {
+    "desc_ja": "究極ハリキリスタジアム88。野球ゲームのハリキリシリーズ88年版。",
+    "developer": "タイトー",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "タイトー",
+    "release_date": "19880519T000000",
+    "title_ja": "究極ハリキリスタジアム'88"
+  },
+  "Kyuukyoku Harikiri Stadium - Heisei Gannen Han (Japan)": {
+    "desc_ja": "究極ハリキリスタジアム平成元年版。平成最初の年のハリキリ野球ゲーム。",
+    "developer": "タイトー",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "タイトー",
+    "release_date": "19890317T000000",
+    "title_ja": "究極ハリキリスタジアム 平成元年版"
+  },
+  "Kyuukyoku Harikiri Stadium 3 (Japan)": {
+    "desc_ja": "究極ハリキリスタジアム3。ハリキリ野球ゲームシリーズの第3弾。",
+    "developer": "タイトー",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "タイトー",
+    "release_date": "19881019T000000",
+    "title_ja": "究極ハリキリスタジアム3"
+  },
+  "Lagrange Point (Japan)": {
+    "desc_ja": "ラグランジュポイント。コナミのSF RPG。宇宙ステーションでのバイオハザード。",
+    "developer": "コナミ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "コナミ",
+    "release_date": "19910426T000000",
+    "title_ja": "ラグランジュポイント"
+  },
+  "Lipple Island (Japan)": {
+    "desc_ja": "リップルアイランド。海に囲まれた島を舞台にしたアクションアドベンチャー。",
+    "developer": "サンソフト",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "サンソフト",
+    "release_date": "19870320T000000",
+    "title_ja": "リップルアイランド"
+  },
+  "Live in Power Bowl - TM Network (Japan)": {
+    "desc_ja": "TM NETWORKのライブ映像付きボウリングゲーム。音楽とスポーツの融合作品。",
+    "developer": "エポック",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "エポック",
+    "release_date": "19890908T000000",
+    "title_ja": "ライブ・イン・パワーボウル TM NETWORK"
+  },
+  "Lost Word of Jenny (Japan)": {
+    "desc_ja": "ジェニーの失われた言葉。英語学習要素を含むアドベンチャーゲーム。",
+    "developer": "スクエア",
+    "genre": "Adventure, Educational",
+    "players": "1",
+    "publisher": "スクウェア",
+    "release_date": "19871121T000000",
+    "title_ja": "ロスト・ワード・オブ・ジェニー"
+  },
+  "Lunar Ball (Japan)": {
+    "desc_ja": "ルナーボール。月面を舞台にした未来的ピンボールアクション。",
+    "developer": "ポニーキャニオン",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19900323T000000",
+    "title_ja": "ルナーボール"
+  },
+  "Magical Doropie (Japan)": {
+    "desc_ja": "マジカルドロッピー。魔法少女が活躍するアクションシューティング。",
+    "developer": "ヴィック東海",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19900629T000000",
+    "title_ja": "マジカルドロッピー"
+  },
+  "Magical Taruruuto-kun - Fantastic World!! (Japan)": {
+    "desc_ja": "まじかるタルるートくん。江川達也原作の魔法アクションアドベンチャー。",
+    "developer": "バンダイ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19910726T000000",
+    "title_ja": "まじかるタルるートくん ファンタスティックワールド!!"
+  },
+  "Maison Ikkoku (Japan)": {
+    "desc_ja": "めぞん一刻。高橋留美子原作のアパート恋愛アドベンチャー。",
+    "developer": "バンダイ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19860930T000000",
+    "title_ja": "めぞん一刻"
+  },
+  "Majin Eiyuu Den Wataru Gaiden (Japan)": {
+    "desc_ja": "魔神英雄伝ワタル外伝。アニメを原作とするファンタジーアクションRPG。",
+    "developer": "バンダイ",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19901221T000000",
+    "title_ja": "魔神英雄伝ワタル外伝"
+  },
+  "Majou Densetsu 2 - Daimashikyou Galious (Japan)": {
+    "desc_ja": "魔城伝説2大魔司教ガリウス。コナミの横スクロールアクションアドベンチャー。",
+    "developer": "コナミ",
+    "genre": "Action, Adventure",
+    "players": "2",
+    "publisher": "コナミ",
+    "release_date": "19870822T000000",
+    "title_ja": "魔城伝説2 大魔司教ガリウス"
+  },
+  "Mappy (Japan)": {
+    "desc_ja": "マッピー。ナムコの名作アクション。警察官マッピーがネコ泥棒を捕まえる。",
+    "developer": "ナムコ",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19840425T000000",
+    "title_ja": "マッピー"
+  },
+  "Mario Bros. (Japan)": {
+    "desc_ja": "マリオブラザーズ。マリオとルイージの配管工兄弟が地下で害虫退治。",
+    "developer": "任天堂",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19830914T000000",
+    "title_ja": "マリオブラザーズ"
+  },
+  "Masuzoe Youichi - Icchou Made Famicom (Japan)": {
+    "desc_ja": "舛添要一一兆円までファミコン。政治評論家監修の経済シミュレーション。",
+    "developer": "バップ",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "バップ",
+    "release_date": "19890901T000000",
+    "title_ja": "舛添要一 一兆円までファミコン"
+  },
+  "Matsumoto Tooru no Kabushiki Hisshou Gaku (Japan)": {
+    "desc_ja": "松本亨の株式必勝学。株式投資をテーマにしたシミュレーションゲーム。",
+    "developer": "イマジニア",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "イマジニア",
+    "release_date": "19881125T000000",
+    "title_ja": "松本亨の株式必勝学"
+  },
+  "Matsumoto Tooru no Kabushiki Hisshou Gaku 2 (Japan)": {
+    "desc_ja": "松本亨の株式必勝学2。株式投資シミュレーションの続編。",
+    "developer": "イマジニア",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "イマジニア",
+    "release_date": "19890721T000000",
+    "title_ja": "松本亨の株式必勝学2"
+  },
+  "Meikyuu Kumikyoku (Japan)": {
+    "desc_ja": "迷宮組曲。ハドソンのアクションアドベンチャーで迷宮を攻略。",
+    "developer": "ハドソン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19860418T000000",
+    "title_ja": "迷宮組曲"
+  },
+  "Meikyuu Shima (Japan)": {
+    "desc_ja": "迷宮島。島全体が迷宮になったアドベンチャーで謎解きを進める。",
+    "developer": "ハドソン",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19881125T000000",
+    "title_ja": "迷宮島"
+  },
+  "Melville's Flame (Japan)": {
+    "desc_ja": "メルヴィルの炎。冒険小説をモチーフにしたアドベンチャーRPG。",
+    "developer": "T&E ソフト",
+    "genre": "Adventure, Role Playing Game",
+    "players": "1",
+    "publisher": "T&E ソフト",
+    "release_date": "19861212T000000",
+    "title_ja": "メルヴィルの炎"
+  },
+  "Mickey Mouse (Japan)": {
+    "desc_ja": "ミッキーマウス。ディズニーキャラクターのアクションアドベンチャー。",
+    "developer": "ハドソン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19881012T000000",
+    "title_ja": "ミッキーマウス"
+  },
+  "Mickey Mouse 3 - Yume Fuusen (Japan)": {
+    "desc_ja": "ミッキーマウス3夢風船。ミッキーが風船で空を飛ぶアクション。",
+    "developer": "ハドソン",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19921225T000000",
+    "title_ja": "ミッキーマウス3 夢風船"
+  },
+  "Minelvaton Saga (Japan)": {
+    "desc_ja": "ミネルバトンサーガ。ファンタジー世界のRPGで剣と魔法の冒険。",
+    "developer": "リバーヒルソフト",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "リバーヒルソフト",
+    "release_date": "19871218T000000",
+    "title_ja": "ミネルバトンサーガ"
+  },
+  "Mini-Putt (Japan)": {
+    "desc_ja": "ミニパット。かわいいキャラクターでプレイするミニゴルフゲーム。",
+    "developer": "ポニーキャニオン",
+    "genre": "Sports",
+    "players": "4",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19880420T000000",
+    "title_ja": "ミニパット"
+  },
+  "Miracle Ropit's Adventure in 2100 (Japan)": {
+    "desc_ja": "ミラクルロピットの2100年大冒険。未来を舞台にしたSFアクション。",
+    "developer": "ヴィック東海",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19860919T000000",
+    "title_ja": "ミラクルロピットの2100年大冒険"
+  },
+  "Mississippi Satsujin Jiken (Japan)": {
+    "desc_ja": "ミシシッピー殺人事件。推理小説をモチーフにした推理アドベンチャー。",
+    "developer": "ジャレコ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19861128T000000",
+    "title_ja": "ミシシッピー殺人事件"
+  },
+  "Mobile Suit Z Gundam - Hot Scramble (Japan)": {
+    "desc_ja": "機動戦士Zガンダムのシューティング。モビルスーツでの宇宙戦闘。",
+    "developer": "バンダイ",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19860814T000000",
+    "title_ja": "機動戦士Zガンダム ホットスクランブル"
+  },
+  "Moero TwinBee - Cinnamon Hakase wo Sukue! (Japan)": {
+    "desc_ja": "燃えろツインビー。シナモン博士を救え!のシューティングアドベンチャー。",
+    "developer": "コナミ",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "コナミ",
+    "release_date": "19861107T000000",
+    "title_ja": "燃えろ!!ツインビー シナモン博士を救え!"
+  },
+  "Momotarou Densetsu (Japan)": {
+    "desc_ja": "桃太郎伝説。ハドソンの和風RPGで桃太郎の物語をベースにした冒険。",
+    "developer": "ハドソン",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19870726T000000",
+    "title_ja": "桃太郎伝説"
+  },
+  "Momotarou Dentetsu (Japan)": {
+    "desc_ja": "桃太郎電鉄。ボードゲームと経営シミュレーションが融合した名作。",
+    "developer": "ハドソン",
+    "genre": "Board game, Simulation",
+    "players": "4",
+    "publisher": "ハドソン",
+    "release_date": "19881202T000000",
+    "title_ja": "桃太郎電鉄"
+  },
+  "Money Game 2 - Kabutochou no Kiseki, The (Japan)": {
+    "desc_ja": "マネーゲーム2兜町の奇跡。株式投資をテーマにした経済シミュレーション。",
+    "developer": "ソフエル",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "ソフエル",
+    "release_date": "19881223T000000",
+    "title_ja": "ザ・マネーゲーム2 兜町の奇跡"
+  },
+  "Musashi no Ken - Tadaima Shugyou Chuu (Japan)": {
+    "desc_ja": "六三四の剣ただいま修行中。剣道漫画を原作とするスポーツアクション。",
+    "developer": "タイトー",
+    "genre": "Sports, Action",
+    "players": "1",
+    "publisher": "タイトー",
+    "release_date": "19861021T000000",
+    "title_ja": "六三四の剣 ただいま修行中"
+  },
+  "Nagagutsu wo Haita Neko - Sekai Isshuu 80 Nichi Daibouken (Japan)": {
+    "desc_ja": "長靴をはいた猫の世界一周80日大冒険。童話をモチーフにしたアドベンチャー。",
+    "developer": "東映動画",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "東映動画",
+    "release_date": "19861212T000000",
+    "title_ja": "長靴をはいた猫 世界一周80日大冒険"
+  },
+  "Namco Classic 2 (Japan)": {
+    "desc_ja": "ナムコクラシック2。ナムコの名作ゲーム集第2弾のコンピレーション。",
+    "developer": "ナムコ",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19880219T000000",
+    "title_ja": "ナムコクラシック2"
+  },
+  "Nangoku Shirei!! - Spy vs Spy (Japan)": {
+    "desc_ja": "南国指令スパイVSスパイ。2人のスパイが争う対戦アクション。",
+    "developer": "ケムコ",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ケムコ",
+    "release_date": "19860430T000000",
+    "title_ja": "南国指令!! スパイVSスパイ"
+  },
+  "Nekketsu Kakutou Densetsu (Japan)": {
+    "desc_ja": "熱血格闘伝説。くにおくんシリーズの格闘アクション。",
+    "developer": "テクノスジャパン",
+    "genre": "Fighting",
+    "players": "4",
+    "publisher": "テクノスジャパン",
+    "release_date": "19921223T000000",
+    "title_ja": "熱血格闘伝説"
+  },
+  "Nemo - Pajama Hero (Japan)": {
+    "desc_ja": "ニモ・パジャマヒーロー。夢の世界で活躍するアクションアドベンチャー。",
+    "developer": "ヘクト",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ヘクト",
+    "release_date": "19900914T000000",
+    "title_ja": "ニモ パジャマヒーロー"
+  },
+  "Ninja Hattori Kun (Japan)": {
+    "desc_ja": "忍者ハットリくん。藤子不二雄A原作のアクションアドベンチャー。",
+    "developer": "ハドソン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19860305T000000",
+    "title_ja": "忍者ハットリくん"
+  },
+  "Ninja Kun (Japan)": {
+    "desc_ja": "忍者くん。忍者が活躍するアクションゲームの元祖的作品。",
+    "developer": "ジャレコ",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ジャレコ",
+    "release_date": "19850830T000000",
+    "title_ja": "忍者くん"
+  },
+  "Ninja Ryukenden (Japan)": {
+    "desc_ja": "忍者龍剣伝。リュウ・ハヤブサが主人公のアクションアドベンチャー。",
+    "developer": "テクモ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "テクモ",
+    "release_date": "19881210T000000",
+    "title_ja": "忍者龍剣伝"
+  },
+  "Ninja Ryukenden II - Ankoku no Jashin Ken (Japan)": {
+    "desc_ja": "忍者龍剣伝2暗黒の邪神剣。リュウ・ハヤブサの新たな戦いを描く続編。",
+    "developer": "テクモ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "テクモ",
+    "release_date": "19900406T000000",
+    "title_ja": "忍者龍剣伝II 暗黒の邪神剣"
+  },
+  "Ninja Ryukenden III - Yomi no Hakobune (Japan)": {
+    "desc_ja": "忍者龍剣伝3黄泉の方舟。シリーズ第3弾で龍剣伝の完結編。",
+    "developer": "テクモ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "テクモ",
+    "release_date": "19910621T000000",
+    "title_ja": "忍者龍剣伝III 黄泉の方舟"
+  },
+  "Nobunaga no Yabou - Zenkoku Han (Japan)": {
+    "desc_ja": "信長の野望全国版。光栄の戦国シミュレーション。全国統一を目指す。",
+    "developer": "光栄",
+    "genre": "Strategy",
+    "players": "1",
+    "publisher": "光栄",
+    "release_date": "19860228T000000",
+    "title_ja": "信長の野望 全国版"
+  },
+  "Nuts & Milk (Japan)": {
+    "desc_ja": "ナッツ&ミルク。ハドソンのパズルアクションでミルクを集める。",
+    "developer": "ハドソン",
+    "genre": "Puzzle, Action",
+    "players": "2",
+    "publisher": "ハドソン",
+    "release_date": "19840728T000000",
+    "title_ja": "ナッツ&ミルク"
+  },
+  "Oishinbo (Japan)": {
+    "desc_ja": "美味しんぼ。雁屋哲原作のグルメ漫画を原作とするアドベンチャー。",
+    "developer": "バンダイ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19890421T000000",
+    "title_ja": "美味しんぼ"
+  },
+  "Onyanko Town (Japan)": {
+    "desc_ja": "おニャン子タウン。おニャン子クラブをテーマにしたアドベンチャー。",
+    "developer": "ポニーキャニオン",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19870725T000000",
+    "title_ja": "おニャン子タウン"
+  },
+  "Osomatsu Kun (Japan)": {
+    "desc_ja": "おそ松くん。赤塚不二夫原作のギャグ漫画アドベンチャー。",
+    "developer": "バンダイ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19881022T000000",
+    "title_ja": "おそ松くん"
+  },
+  "Outlanders (Japan)": {
+    "desc_ja": "アウトランダーズ。SFアニメを原作とするアクションアドベンチャー。",
+    "developer": "ミンドウェア",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ミンドウェア",
+    "release_date": "19861219T000000",
+    "title_ja": "アウトランダーズ"
+  },
+  "Paaman - Enban wo Torikaese!! (Japan)": {
+    "desc_ja": "パーマン円盤を取り返せ!!。藤子F不二雄原作のアクションアドベンチャー。",
+    "developer": "バンダイ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19880729T000000",
+    "title_ja": "パーマン 円盤を取り返せ!!"
+  },
+  "Paaman Part 2 - Himitsu Kessha Madoodan wo Taose! (Japan)": {
+    "desc_ja": "パーマンPart2秘密結社マドー団を倒せ!。パーマンの第2弾アクション。",
+    "developer": "バンダイ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19901214T000000",
+    "title_ja": "パーマンPart2 秘密結社マドー団を倒せ!"
+  },
+  "Pac-Land (Japan)": {
+    "desc_ja": "パックランド。パックマンの横スクロールアクション。妖精の国への冒険。",
+    "developer": "ナムコ",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19850420T000000",
+    "title_ja": "パックランド"
+  },
+  "Palamedes 2 - Star Twinkles (Japan)": {
+    "desc_ja": "パラメデス2スターツインクルズ。数字パズルゲームの続編。",
+    "developer": "ホット・ビィ",
+    "genre": "Puzzle",
+    "players": "2",
+    "publisher": "ホット・ビィ",
+    "release_date": "19910222T000000",
+    "title_ja": "パラメデス2 スターツインクルズ"
+  },
+  "Quest of Ki, The (Japan)": {
+    "desc_ja": "クエストオブキ。バベルの塔の前史を描くアクションアドベンチャー。",
+    "developer": "ナムコ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ナムコ",
+    "release_date": "19881214T000000",
+    "title_ja": "クエスト・オブ・キ"
+  },
+  "Raf World (Japan)": {
+    "desc_ja": "ラフワールド。イカダで川下りするアクションアドベンチャー。",
+    "developer": "エポック",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "エポック",
+    "release_date": "19870731T000000",
+    "title_ja": "ラフワールド"
+  },
+  "Rasaaru Ishii no Childs Quest (Japan)": {
+    "desc_ja": "ラサール石井のチャイルズクエスト。タレント監修の学習アドベンチャー。",
+    "developer": "ナムコ",
+    "genre": "Adventure, Educational",
+    "players": "1",
+    "publisher": "ナムコ",
+    "release_date": "19890720T000000",
+    "title_ja": "ラサール石井のチャイルズクエスト"
+  },
+  "Red Ariimaa 2 (Japan)": {
+    "desc_ja": "レッドアリーマー2。魔界村のキャラクターが主役のアクション。",
+    "developer": "カプコン",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "カプコン",
+    "release_date": "19901019T000000",
+    "title_ja": "レッドアリーマー2"
+  },
+  "SD Gundam Gaiden - Knight Gundam Monogatari 2 - Hikari no Kishi (Japan)": {
+    "desc_ja": "SDガンダム外伝ナイトガンダム物語2光の騎士。RPGスタイルのガンダムゲーム。",
+    "developer": "バンダイ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19910315T000000",
+    "title_ja": "SDガンダム外伝 ナイトガンダム物語2 光の騎士"
+  },
+  "SD Keiji - Blader (Japan)": {
+    "desc_ja": "SD刑事ブレーダー。未来警察をテーマにしたアクションシューティング。",
+    "developer": "ハル研究所",
+    "genre": "Shoot'em Up",
+    "players": "1",
+    "publisher": "ハル研究所",
+    "release_date": "19911220T000000",
+    "title_ja": "SD刑事ブレーダー"
+  },
+  "Saiyuuki World (Japan)": {
+    "desc_ja": "西遊記ワールド。孫悟空たちの冒険をテーマにしたアクションRPG。",
+    "developer": "ジャレコ",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19881220T000000",
+    "title_ja": "西遊記ワールド"
+  },
+  "Sangokushi 2 - Haou no Tairiku (Japan)": {
+    "desc_ja": "三國志2覇王の大陸。光栄の三国志シミュレーション第2弾。",
+    "developer": "光栄",
+    "genre": "Strategy",
+    "players": "1",
+    "publisher": "光栄",
+    "release_date": "19920131T000000",
+    "title_ja": "三國志2 覇王の大陸"
+  },
+  "Sansaara Naaga (Japan)": {
+    "desc_ja": "サンサーラナーガ。ドラゴンに転生した主人公のファンタジーRPG。",
+    "developer": "ヴィック東海",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ヴィック東海",
+    "release_date": "19901221T000000",
+    "title_ja": "サンサーラナーガ"
+  },
+  "Sansuu 3 Nen - Keisan Game (Japan)": {
+    "desc_ja": "算数3年計算ゲーム。小学3年生向けの教育ソフト。",
+    "developer": "東京書籍",
+    "genre": "Educational",
+    "players": "1",
+    "publisher": "東京書籍",
+    "release_date": "19860925T000000",
+    "title_ja": "算数3年 計算ゲーム"
+  },
+  "Satomi Hakkenden (Japan)": {
+    "desc_ja": "里見八犬伝。滝沢馬琴の名作小説をRPGにアレンジした作品。",
+    "developer": "SNK",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "SNK",
+    "release_date": "19890929T000000",
+    "title_ja": "里見八犬伝"
+  },
+  "Satsui no Kaisou - Power Soft Satsujin Jiken (Japan)": {
+    "desc_ja": "殺意の階層パワーソフト殺人事件。推理アドベンチャーゲーム。",
+    "developer": "データウエスト",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "データウエスト",
+    "release_date": "19890824T000000",
+    "title_ja": "殺意の階層 パワーソフト殺人事件"
+  },
+  "Satsujin Club (Japan)": {
+    "desc_ja": "殺人クラブ。ミステリー小説をベースにした推理アドベンチャー。",
+    "developer": "ジャレコ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19861128T000000",
+    "title_ja": "殺人クラブ"
+  },
+  "Shaffle Fight (Japan)": {
+    "desc_ja": "シャッフルファイト。カードバトル要素を含む対戦格闘ゲーム。",
+    "developer": "ナツメ",
+    "genre": "Fighting",
+    "players": "2",
+    "publisher": "ナツメ",
+    "release_date": "19931217T000000",
+    "title_ja": "シャッフルファイト"
+  },
+  "Shanghai (Japan) (En)": {
+    "desc_ja": "上海。積み上げられた麻雀牌を取り除くパズルゲーム。",
+    "developer": "サンソフト",
+    "genre": "Puzzle",
+    "players": "1",
+    "publisher": "サンソフト",
+    "release_date": "19860913T000000",
+    "title_ja": "上海"
+  },
+  "Shanghai 2 (Japan)": {
+    "desc_ja": "上海2。上海パズルゲームの続編。新しいレイアウトと機能を追加。",
+    "developer": "サンソフト",
+    "genre": "Puzzle",
+    "players": "2",
+    "publisher": "サンソフト",
+    "release_date": "19890908T000000",
+    "title_ja": "上海2"
+  },
+  "Shikinjou (Japan)": {
+    "desc_ja": "紫禁城。中国の古い都市を舞台にしたアドベンチャーRPG。",
+    "developer": "リバーヒルソフト",
+    "genre": "Adventure, Role Playing Game",
+    "players": "1",
+    "publisher": "リバーヒルソフト",
+    "release_date": "19871218T000000",
+    "title_ja": "紫禁城"
+  },
+  "Shin Jinrui - The New Type (Japan)": {
+    "desc_ja": "新人類ザ・ニュータイプ。近未来SFをテーマにしたアドベンチャー。",
+    "developer": "ホットビィ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ホットビィ",
+    "release_date": "19900727T000000",
+    "title_ja": "新人類 ザ・ニュータイプ"
+  },
+  "Shougun (Japan)": {
+    "desc_ja": "将軍。江戸時代の日本を舞台にした歴史シミュレーション。",
+    "developer": "ホットビィ",
+    "genre": "Strategy",
+    "players": "1",
+    "publisher": "ホットビィ",
+    "release_date": "19881012T000000",
+    "title_ja": "将軍"
+  },
+  "Soap Panic (Japan)": {
+    "desc_ja": "ソープパニック。石鹸をテーマにしたユニークなパズルアクション。",
+    "developer": "ニチブツ",
+    "genre": "Puzzle",
+    "players": "1",
+    "publisher": "ニチブツ",
+    "release_date": "19911220T000000",
+    "title_ja": "ソープパニック"
+  },
+  "Sore Ike! Anapanman - Minna de Hiking Game! (Japan)": {
+    "desc_ja": "それいけ!アンパンマンみんなでハイキングゲーム!。アンパンマンのボードゲーム。",
+    "developer": "エンジェル",
+    "genre": "Board game",
+    "players": "4",
+    "publisher": "バンダイ",
+    "release_date": "19930723T000000",
+    "title_ja": "それいけ!アンパンマン みんなでハイキングゲーム!"
+  },
+  "Spelunker 2 - Yuusha heno Chousen (Japan)": {
+    "desc_ja": "スペランカー2勇者への挑戦。洞窟探険アクションゲームの続編。",
+    "developer": "ブローダーバンド",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ブローダーバンド",
+    "release_date": "19870417T000000",
+    "title_ja": "スペランカー2 勇者への挑戦"
+  },
+  "Sukeban Deka 3 (Japan)": {
+    "desc_ja": "スケバン刑事3。和田慎二原作の学園アクションアドベンチャー。",
+    "developer": "ユタカ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ユタカ",
+    "release_date": "19881201T000000",
+    "title_ja": "スケバン刑事3"
+  },
+  "Super Dyna'mix Badminton (Japan)": {
+    "desc_ja": "スーパーダイナミックスバドミントン。派手な演出が楽しいバドミントンゲーム。",
+    "developer": "サエタ",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "サエタ",
+    "release_date": "19870917T000000",
+    "title_ja": "スーパーダイナミックス バドミントン"
+  },
+  "Super Mario Bros. (Japan)": {
+    "desc_ja": "スーパーマリオブラザーズ。任天堂の代表作で横スクロールアクションの金字塔。",
+    "developer": "任天堂",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19850913T000000",
+    "title_ja": "スーパーマリオブラザーズ"
+  },
+  "Super Mario Bros. 3 (Japan)": {
+    "desc_ja": "スーパーマリオブラザーズ3。マリオシリーズの傑作でワールドマップを導入。",
+    "developer": "任天堂",
+    "genre": "Platform",
+    "players": "2",
+    "publisher": "任天堂",
+    "release_date": "19881023T000000",
+    "title_ja": "スーパーマリオブラザーズ3"
+  },
+  "Super Mogura Tataki!! - Pokkun Moguraa (Japan)": {
+    "desc_ja": "スーパーもぐら叩き!!ポックンモグラー。もぐら叩きゲームのファミコン版。",
+    "developer": "ナツメ",
+    "genre": "Action",
+    "players": "2",
+    "publisher": "ナツメ",
+    "release_date": "19871218T000000",
+    "title_ja": "スーパーもぐら叩き!! ポックンモグラー"
+  },
+  "Sweet Home (Japan)": {
+    "desc_ja": "スウィートホーム。カプコンのホラーRPG。映画タイアップの恐怖体験。",
+    "developer": "カプコン",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "カプコン",
+    "release_date": "19891215T000000",
+    "title_ja": "スウィートホーム"
+  },
+  "Taiyou no Shinden - Asteka 2 (Japan)": {
+    "desc_ja": "太陽の神殿アステカ2。アステカ文明をテーマにしたアドベンチャーRPG。",
+    "developer": "ファルコム",
+    "genre": "Adventure, Role Playing Game",
+    "players": "1",
+    "publisher": "ファルコム",
+    "release_date": "19861126T000000",
+    "title_ja": "太陽の神殿 アステカ2"
+  },
+  "Taiyou no Yuusha Firebird (Japan)": {
+    "desc_ja": "太陽の勇者ファイバード。勇者シリーズのアニメを原作とするアクション。",
+    "developer": "エンジェル",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19910222T000000",
+    "title_ja": "太陽の勇者ファイバード"
+  },
+  "Takahashi Meijin no Bouken Shima IV (Japan)": {
+    "desc_ja": "高橋名人の冒険島IV。名人シリーズの第4弾アクションアドベンチャー。",
+    "developer": "ハドソン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19940204T000000",
+    "title_ja": "高橋名人の冒険島IV"
+  },
+  "Takeshi no Chousenjou (Japan)": {
+    "desc_ja": "たけしの挑戦状。ビートたけし監修の異色ゲーム。理不尽さで有名。",
+    "developer": "タイトー",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "タイトー",
+    "release_date": "19861210T000000",
+    "title_ja": "たけしの挑戦状"
+  },
+  "Tatakae!! Rahmen Man - Sakuretsu Choujin 102 Gei (Japan)": {
+    "desc_ja": "戦え!!ラーメンマン炸裂超人102芸。キン肉マンスピンオフのアクション。",
+    "developer": "バンダイ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19880125T000000",
+    "title_ja": "戦え!!ラーメンマン 炸裂超人102芸"
+  },
+  "Tetris 2 + Bombliss (Japan) (En)": {
+    "desc_ja": "テトリス2+ボンブリス。テトリスに爆弾要素を加えた新しいパズル。",
+    "developer": "BPS",
+    "genre": "Puzzle",
+    "players": "2",
+    "publisher": "BPS",
+    "release_date": "19911213T000000",
+    "title_ja": "テトリス2 + ボンブリス"
+  },
+  "Tetsudou Ou - Famicom Boardgame (Japan)": {
+    "desc_ja": "鉄道王ファミコンボードゲーム。鉄道経営をテーマにしたボードゲーム。",
+    "developer": "スクウェア",
+    "genre": "Board game, Simulation",
+    "players": "4",
+    "publisher": "スクウェア",
+    "release_date": "19911220T000000",
+    "title_ja": "鉄道王 ファミコンボードゲーム"
+  },
+  "Toki no Tabibito (Japan)": {
+    "desc_ja": "時の旅人。タイムトラベルをテーマにしたSFアドベンチャー。",
+    "developer": "ケムコ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ケムコ",
+    "release_date": "19860725T000000",
+    "title_ja": "時の旅人"
+  },
+  "Totsuzen! Machoman (Japan)": {
+    "desc_ja": "突然!マッチョマン。コミカルなアクションゲームでマッチョキャラが活躍。",
+    "developer": "ユタカ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "ユタカ",
+    "release_date": "19900824T000000",
+    "title_ja": "突然!マッチョマン"
+  },
+  "Tower of Druaga, The (Japan)": {
+    "desc_ja": "ドルアーガの塔。ナムコの名作アクションRPG。60階の塔を攻略。",
+    "developer": "ナムコ",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "ナムコ",
+    "release_date": "19850803T000000",
+    "title_ja": "ドルアーガの塔"
+  },
+  "Transformers - Comvoy no Nazo (Japan)": {
+    "desc_ja": "トランスフォーマーコンボイの謎。ロボットアニメを原作とするアクション。",
+    "developer": "タカラ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "タカラ",
+    "release_date": "19860815T000000",
+    "title_ja": "トランスフォーマー コンボイの謎"
+  },
+  "Triathron, The (Japan)": {
+    "desc_ja": "ザ・トライアスロン。水泳・自転車・マラソンの3種競技スポーツゲーム。",
+    "developer": "CBSソニー",
+    "genre": "Sports",
+    "players": "2",
+    "publisher": "CBSソニー",
+    "release_date": "19860808T000000",
+    "title_ja": "ザ・トライアスロン"
+  },
+  "Ultima - Seisha heno Michi (Japan)": {
+    "desc_ja": "ウルティマ聖者への道。オリジンシステムズの名作RPGの移植。",
+    "developer": "オリジン・システムズ",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19890224T000000",
+    "title_ja": "ウルティマ 聖者への道"
+  },
+  "Ultraman Club 3 (Japan)": {
+    "desc_ja": "ウルトラマンクラブ3。ウルトラマンシリーズのアクションアドベンチャー。",
+    "developer": "エンジェル",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "バンダイ",
+    "release_date": "19910813T000000",
+    "title_ja": "ウルトラマンクラブ3"
+  },
+  "Urusei Yatsura - Lum no Wedding Bell (Japan)": {
+    "desc_ja": "うる星やつらラムのウェディングベル。高橋留美子原作のアドベンチャー。",
+    "developer": "ジャレコ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19860903T000000",
+    "title_ja": "うる星やつら ラムのウェディングベル"
+  },
+  "Ushio to Tora - Shinen no Daiyou (Japan)": {
+    "desc_ja": "うしおととら深淵の大妖。藤田和日郎原作の妖怪バトルアクション。",
+    "developer": "ユタカ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "ユタカ",
+    "release_date": "19930129T000000",
+    "title_ja": "うしおととら 深淵の大妖"
+  },
+  "Utsurun Desu (Japan)": {
+    "desc_ja": "うつるんです。写ルンですをテーマにした写真撮影アドベンチャー。",
+    "developer": "ハドソン",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ハドソン",
+    "release_date": "19931217T000000",
+    "title_ja": "うつるんです"
+  },
+  "Valis - The Fantastic Soldier (Japan)": {
+    "desc_ja": "バリス夢戦士。美少女戦士が活躍するアクションアドベンチャー。",
+    "developer": "日本テレネット",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "日本テレネット",
+    "release_date": "19870806T000000",
+    "title_ja": "バリス 夢戦士"
+  },
+  "Vegas Connection - Casino Kara Ai wo Komete (Japan)": {
+    "desc_ja": "ベガスコネクションカジノから愛をこめて。カジノを舞台にしたアドベンチャー。",
+    "developer": "パック・イン・ビデオ",
+    "genre": "Adventure, Simulation",
+    "players": "1",
+    "publisher": "パック・イン・ビデオ",
+    "release_date": "19900330T000000",
+    "title_ja": "ベガスコネクション カジノから愛をこめて"
+  },
+  "Venus Senki (Japan)": {
+    "desc_ja": "ヴィーナス戦記。安彦良和原作のSFアニメアクションゲーム。",
+    "developer": "テクモ",
+    "genre": "Action",
+    "players": "1",
+    "publisher": "テクモ",
+    "release_date": "19890407T000000",
+    "title_ja": "ヴィーナス戦記"
+  },
+  "Viva! Las Vegas (Japan)": {
+    "desc_ja": "ビバ!ラスベガス。ラスベガスのカジノを楽しむギャンブルシミュレーション。",
+    "developer": "C&Eソフト",
+    "genre": "Simulation",
+    "players": "1",
+    "publisher": "C&Eソフト",
+    "release_date": "19900720T000000",
+    "title_ja": "ビバ!ラスベガス"
+  },
+  "Wai Wai World 2 - SOS!! Paseri Jou (Japan)": {
+    "desc_ja": "ワイワイワールド2。コナミキャラ大集合のアクションアドベンチャー続編。",
+    "developer": "コナミ",
+    "genre": "Action, Adventure",
+    "players": "2",
+    "publisher": "コナミ",
+    "release_date": "19910119T000000",
+    "title_ja": "ワイワイワールド2 SOS!!パセリ城"
+  },
+  "Warpman (Japan) (En)": {
+    "desc_ja": "ワープマン。ワープ機能を使ったユニークなアクションパズル。",
+    "developer": "ナムコ",
+    "genre": "Puzzle, Action",
+    "players": "2",
+    "publisher": "ナムコ",
+    "release_date": "19850326T000000",
+    "title_ja": "ワープマン"
+  },
+  "White Lion Densetsu (Japan)": {
+    "desc_ja": "ホワイトライオン伝説。白いライオンの冒険を描くアクションアドベンチャー。",
+    "developer": "パオン",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "パオン",
+    "release_date": "19901130T000000",
+    "title_ja": "ホワイトライオン伝説"
+  },
+  "Wily & Light no Rockboard - That's Paradise (Japan)": {
+    "desc_ja": "ワイリー&ライトのロックボード。ロックマンキャラのボードゲーム。",
+    "developer": "カプコン",
+    "genre": "Board game",
+    "players": "4",
+    "publisher": "カプコン",
+    "release_date": "19930204T000000",
+    "title_ja": "ワイリー&ライトのロックボード ザッツ☆パラダイス"
+  },
+  "Wing of Madoola, The (Japan)": {
+    "desc_ja": "マドゥーラの翼。女戦士ルシアが活躍するメトロイドヴァニア風アクション。",
+    "developer": "サンソフト",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "サンソフト",
+    "release_date": "19860718T000000",
+    "title_ja": "マドゥーラの翼"
+  },
+  "Wizardry (Japan)": {
+    "desc_ja": "ウィザードリィ。サーテック移植の名作ダンジョンRPG。",
+    "developer": "サーテック",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "アスキー",
+    "release_date": "19870422T000000",
+    "title_ja": "ウィザードリィ"
+  },
+  "Wizardry - Legacy of Llylgamyn (Japan)": {
+    "desc_ja": "ウィザードリィリルガミンの遺産。ウィザードリィシリーズ第3弾。",
+    "developer": "サーテック",
+    "genre": "Role Playing Game",
+    "players": "1",
+    "publisher": "アスキー",
+    "release_date": "19901221T000000",
+    "title_ja": "ウィザードリィ リルガミンの遺産"
+  },
+  "Woody Poko (Japan)": {
+    "desc_ja": "ウッディポコ。森の仲間たちが活躍するアクションアドベンチャー。",
+    "developer": "ユーズ",
+    "genre": "Action, Adventure",
+    "players": "1",
+    "publisher": "ユーズ",
+    "release_date": "19870917T000000",
+    "title_ja": "ウッディポコ"
+  },
+  "Yamamura Misa Suspense - Kyouto Hana no Misshitsu Satsujin Jiken (Japan)": {
+    "desc_ja": "山村美紗サスペンス京都花の密室殺人事件。推理小説家監修のミステリー。",
+    "developer": "TOSE",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ヘクト",
+    "release_date": "19870326T000000",
+    "title_ja": "山村美紗サスペンス 京都花の密室殺人事件"
+  },
+  "Yamamura Misa Suspense - Kyouto Ryuu no Tera Satsujin (Japan)": {
+    "desc_ja": "山村美紗サスペンス京都龍の寺殺人事件。京都を舞台にした推理アドベンチャー。",
+    "developer": "TOSE",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ヘクト",
+    "release_date": "19871120T000000",
+    "title_ja": "山村美紗サスペンス 京都龍の寺殺人事件"
+  },
+  "Yamamura Misa Suspense - Kyouto Zaiteku Satsujin Jiken (Japan)": {
+    "desc_ja": "山村美紗サスペンス京都財テク殺人事件。財テクブームを背景にした推理もの。",
+    "developer": "TOSE",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ヘクト",
+    "release_date": "19881124T000000",
+    "title_ja": "山村美紗サスペンス 京都財テク殺人事件"
+  },
+  "Yie Ar Kung-Fu (Japan) (V1.4)": {
+    "desc_ja": "イー・アル・カンフー。コナミの格闘アクション。リー・ヤンが様々な武術家と戦う。",
+    "developer": "コナミ",
+    "genre": "Fighting",
+    "players": "1",
+    "publisher": "コナミ",
+    "release_date": "19850329T000000",
+    "title_ja": "イー・アル・カンフー"
+  },
+  "Youkai Kurabu (Japan)": {
+    "desc_ja": "妖怪クラブ。水木しげるの妖怪をテーマにしたホラーアドベンチャー。",
+    "developer": "ジャレコ",
+    "genre": "Adventure",
+    "players": "1",
+    "publisher": "ジャレコ",
+    "release_date": "19870731T000000",
+    "title_ja": "妖怪クラブ"
+  },
+  "Zoids 2 - Zenebasu no Gyakushuu (Japan)": {
+    "desc_ja": "ゾイド2ゼネバスの逆襲。メカ生物ゾイドの戦いを描くアクションRPG。",
+    "developer": "ポニーキャニオン",
+    "genre": "Action, Role Playing Game",
+    "players": "1",
+    "publisher": "ポニーキャニオン",
+    "release_date": "19890623T000000",
+    "title_ja": "ゾイド2 ゼネバスの逆襲"
   }
 }
