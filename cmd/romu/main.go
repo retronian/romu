@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"text/tabwriter"
@@ -307,9 +308,14 @@ func cmdImportGameList() {
 
 func cmdEnrich() {
 	platform := ""
-	for i := 2; i < len(os.Args)-1; i++ {
-		if os.Args[i] == "--platform" {
+	showSkipped := false
+	for i := 2; i < len(os.Args); i++ {
+		if os.Args[i] == "--platform" && i+1 < len(os.Args) {
 			platform = os.Args[i+1]
+			i++
+		}
+		if os.Args[i] == "--show-skipped" {
+			showSkipped = true
 		}
 	}
 
@@ -331,10 +337,13 @@ func cmdEnrich() {
 	}
 
 	enriched, skipped := 0, 0
+	// platform -> list of skipped titles
+	skippedByPlatform := make(map[string][]string)
 	for _, r := range roms {
 		entry := gamedb.Lookup(r.Platform, r.TitleEN)
 		if entry == nil {
 			skipped++
+			skippedByPlatform[r.Platform] = append(skippedByPlatform[r.Platform], r.TitleEN)
 			continue
 		}
 		err := database.UpdateGameMetadata(r.GameID, entry.TitleJA, entry.DescJA, entry.Developer, entry.Publisher, entry.ReleaseDate, entry.Genre, entry.Players)
@@ -346,6 +355,24 @@ func cmdEnrich() {
 	}
 
 	fmt.Printf("Enriched %d games (%d skipped - no gamedb entry)\n", enriched, skipped)
+
+	if showSkipped && skipped > 0 {
+		fmt.Printf("\n--- Skipped titles by platform ---\n")
+		// Sort platforms for consistent output
+		platforms := make([]string, 0, len(skippedByPlatform))
+		for p := range skippedByPlatform {
+			platforms = append(platforms, p)
+		}
+		sort.Strings(platforms)
+		for _, p := range platforms {
+			titles := skippedByPlatform[p]
+			fmt.Printf("\n[%s] (%d skipped)\n", p, len(titles))
+			sort.Strings(titles)
+			for _, t := range titles {
+				fmt.Printf("  - %s\n", t)
+			}
+		}
+	}
 }
 
 func cmdExportGameList() {
