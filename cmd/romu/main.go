@@ -354,9 +354,38 @@ func cmdEnrich() {
 		enriched++
 	}
 
-	fmt.Printf("Enriched %d games (%d skipped - no gamedb entry)\n", enriched, skipped)
+	// Also try to enrich unmatched ROMs by filename
+	unmatchedRoms, err := database.GetUnmatchedRoms(platform)
+	filenameEnriched := 0
+	filenameSkipped := 0
+	if err == nil {
+		for _, ur := range unmatchedRoms {
+			// Strip extension from filename to get title
+			title := ur.Filename
+			for _, ext := range []string{".zip", ".7z", ".nes", ".sfc", ".smc", ".gb", ".gbc", ".gba", ".md", ".bin", ".pce", ".ws", ".wsc", ".n64", ".z64", ".v64", ".nds"} {
+				title = strings.TrimSuffix(title, ext)
+			}
+			entry := gamedb.Lookup(ur.Platform, title)
+			if entry == nil {
+				filenameSkipped++
+				skippedByPlatform[ur.Platform] = append(skippedByPlatform[ur.Platform], title)
+				continue
+			}
+			err := database.CreateGameAndLink(ur.ID, title, ur.Platform, entry.TitleJA, entry.DescJA, entry.Developer, entry.Publisher, entry.ReleaseDate, entry.Genre, entry.Players)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "  error creating game for %s: %v\n", title, err)
+				continue
+			}
+			filenameEnriched++
+		}
+	}
 
-	if showSkipped && skipped > 0 {
+	fmt.Printf("Enriched %d games (%d skipped - no gamedb entry)\n", enriched, skipped)
+	if filenameEnriched > 0 || filenameSkipped > 0 {
+		fmt.Printf("Enriched %d unmatched ROMs by filename (%d skipped)\n", filenameEnriched, filenameSkipped)
+	}
+
+	if showSkipped && (skipped > 0 || filenameSkipped > 0) {
 		fmt.Printf("\n--- Skipped titles by platform ---\n")
 		// Sort platforms for consistent output
 		platforms := make([]string, 0, len(skippedByPlatform))

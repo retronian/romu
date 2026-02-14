@@ -503,6 +503,47 @@ func (d *DB) UpdateGameMetadata(gameID int64, titleJA, descJA, developer, publis
 	return err
 }
 
+// UnmatchedRom represents a rom_file without a game_id
+type UnmatchedRom struct {
+	ID       int64
+	Filename string
+	Platform string
+}
+
+// GetUnmatchedRoms returns rom_files that have no game_id
+func (d *DB) GetUnmatchedRoms(platform string) ([]UnmatchedRom, error) {
+	query := `SELECT id, filename, platform FROM rom_files WHERE game_id IS NULL`
+	args := []interface{}{}
+	if platform != "" {
+		query += ` AND platform = ?`
+		args = append(args, platform)
+	}
+	rows, err := d.Query(query, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var result []UnmatchedRom
+	for rows.Next() {
+		var r UnmatchedRom
+		rows.Scan(&r.ID, &r.Filename, &r.Platform)
+		result = append(result, r)
+	}
+	return result, rows.Err()
+}
+
+// CreateGameAndLink creates a game entry and links it to a rom_file
+func (d *DB) CreateGameAndLink(romID int64, titleEN, platform, titleJA, descJA, developer, publisher, releaseDate, genre, players string) error {
+	res, err := d.Exec(`INSERT INTO games (title_en, platform, title_ja, description_ja, developer, publisher, release_date, genre, players) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		titleEN, platform, titleJA, descJA, developer, publisher, releaseDate, genre, players)
+	if err != nil {
+		return err
+	}
+	gameID, _ := res.LastInsertId()
+	_, err = d.Exec(`UPDATE rom_files SET game_id = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`, gameID, romID)
+	return err
+}
+
 // MatchByHash matches rom_files to games using DAT ROM info
 func (d *DB) MatchROMs(datRoms []DATRom) (int, error) {
 	tx, err := d.Begin()
